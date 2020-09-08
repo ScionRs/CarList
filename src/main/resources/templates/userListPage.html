@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/Style.css">
+</head>
+<body>
+
+<table class="admin-table">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="users : ${userList}">
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.firstName}"></td>
+        <td th:text="${users.lastName}"></td>
+        <td th:text="${users.email}"></td>
+        <td th:text="${users.password}"></td>
+        <td><a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/deleteUser/' + ${users.id}}">Delete</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/TableStyle.css/">
+</head>
+<body>
+<div class="form-style">
+<h1>Create new Car</h1>
+<br/>
+<form action="#" th:action="@{/save}" th:object="${brands}" enctype="multipart/form-data" method="post">
+    <table>
+        <tr>
+            <td><p>Brand:</p></td>
+            <td><input type="text" th:field="*{brand}"></td>
+        </tr>
+        <tr>
+            <td><p>Model:</p></td>
+            <td><input type="text" th:field="*{model}"></td>
+        </tr>
+        <tr>
+            <td><p>Body Type:</p></td>
+            <td><select th:field="*{bodyType}">
+                <option th:value="'Sedan'" th:text="Sedan">Sedan</option>
+                <option th:value="'Hatchback'" th:text="Hatchback">Hatchback</option>
+                <option th:value="'Wagon'" th:text="Wagon">Wagon</option>
+                <option th:value="'Crossover'" th:text="Crossover">Crossover</option>
+                <option th:value="'SUV'" th:text="SUV">SUV</option>
+                <option th:value="'Pickup'" th:text="Pickup">Pickup</option>
+                <option th:value="'Van'" th:text="Van">Van</option>
+                <option th:value="'Coupe'" th:text="Coupe">Coupe</option>
+                <option th:value="'Convertible'" th:text="Convertible">Convertible</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><p>Year</p></td>
+            <td><input type="text" th:field="*{year}"></td>
+        </tr>
+        <tr>
+            <td><p>Transmission:</p></td>
+            <td>
+            <select th:field="*{transmission}">
+                <option th:value="'Automatic'" th:text="Automatic">Automatic</option>
+                <option th:value="'Robot'" th:text="Robot">Robot</option>
+                <option th:value="'Variable'" th:text="Variable">Variable</option>
+                <option th:value="'Manual'" th:text="Manual">Manual</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Price:</p></td>
+            <td><input type="text" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td><p>Image:</p></td>
+            <td><input type="file" name="fileImage" id="fileImage" accept="image/png,image/jpeg"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>
