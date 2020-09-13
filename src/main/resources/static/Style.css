@@ -7,13 +7,28 @@ body {
 }
 a{
     text-decoration: none;
+    color:black;
 }
 .header{
     display: flex;
     margin-top: 30px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 0 20px gray;
+    background-color: white;
+}
+.categories-link{
+    font-family: Roboto Slab, sans-serif;
+    text-align: center;
+    font-size: 36px;
+    margin-top: 35px;
+    margin-right: 120px;
+    flex:4;
+
 }
 .lang{
-    flex: 6;
+    flex: 2;
 }
 .lang a{
     margin-right: 10px;
@@ -23,9 +38,10 @@ a{
 }
 .auth{
     flex: 2;
-    font-size: 24px;
+    font-size: 36px;
    margin-top: 35px;
     text-decoration: none !important;
+
 }
 .nav{
     text-align:center;

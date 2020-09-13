@@ -30,6 +30,10 @@ public class Brand {
 
     private String image;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private BrandCategory brandCategory;
+
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)

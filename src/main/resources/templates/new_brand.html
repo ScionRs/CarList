@@ -11,6 +11,9 @@
 <br/>
 <form action="#" th:action="@{/save}" th:object="${brands}" enctype="multipart/form-data" method="post">
     <table>
+        <select th:field="*{brandCategory}">
+            <option th:each="brandCategory : ${categories}" th:value="${brandCategory.id}" th:text="${brandCategory.name}">
+        </select>
         <tr>
             <td><p>Brand:</p></td>
             <td><input type="text" th:field="*{brand}"></td>

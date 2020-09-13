@@ -16,6 +16,10 @@
         <a th:href="@{/(lang='de_De')}"><img src="/img/de.png"  alt="De-Flag"></a>
     </div>
 
+    <div class="categories-link">
+        <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
+    </div>
+
     <div class="auth">
         <a  href="#" th:href="@{/login}" th:text="#{language.auth}" th:if="${#authorization.expression('!isAuthenticated()')}">Registration and
             Login Module</a>
@@ -23,8 +27,9 @@
             <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Logout</a></li>
         </ul>
     </div>
-
 </div>
+
+
 
 <div class="nav">
 <h1 th:text="#{welcome.message}"></h1>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import ru.ravilov.ClientBase.model.Brand;
+import ru.ravilov.ClientBase.service.BrandCategoryService;
 import ru.ravilov.ClientBase.service.BrandService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,8 @@ public class BrandController {
 
     @Autowired
     private BrandService brandService;
+    @Autowired
+    private BrandCategoryService brandCategoryService;
     
     @GetMapping("/")
     public String viewHomePage(Model model, HttpServletRequest request, @Param("keyword") String keyword){
@@ -63,6 +66,7 @@ public class BrandController {
     public String showNewCarProductForm(Model model){
         Brand brands = new Brand();
         model.addAttribute("brands",brands);
+        model.addAttribute("categories",brandCategoryService.listAll());
 
         return "new_brand";
     }

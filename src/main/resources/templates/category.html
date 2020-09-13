@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/Style.css"/>
+</head>
+<body>
+<div class="cards" th:each="category: ${brandCategory.brands}" enctype="multipart/form-data">
+<div class="info">
+    <div>
+        <img  th:src="@{${category.getLogoImagePath()}}" alt="Car-Image" width="450px" height="250px"/>
+    </div>
+<div>
+    <ul>
+        <li><p>Name: <span th:text="${category.brand}"></span></p></li>
+        <li><p>Model: <span th:text="${category.model}">Leon</span></p></li>
+        <li><p>Body Type: <span th:text="${category.bodyType}">Body Type</span></p></li>
+        <li><p>Transmission: <span th:text="${category.transmission}">Transmission</span></p></li>
+        <li><p>Year: <span th:text="${category.year}">Year</span></p></li>
+        <li><p>Price: <span th:text="${category.price}">39000</span></p></li>
+    </ul>
+</div>
+</div>
+    <br/>
+</div>
+</body>
+</html>

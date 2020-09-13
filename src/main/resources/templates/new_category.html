@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/saveCategory}" th:object="${brandCategory}" enctype="multipart/form-data" method="post">
+    <table>
+        <tr>
+            <td>Image:</td>
+            <td><input type="file" name="fileImage" id="fileImage" accept="image/png,image/jpeg"/></td>
+        </tr>
+        <tr>
+            <td>Brand:</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td><input type="text" th:field="*{country}"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
