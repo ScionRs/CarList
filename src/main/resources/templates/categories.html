@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="CategoryStyle.css">
 </head>
 <body>
+
+<div th:replace="fragment.html :: header"></div>
 
 <a class = "create-new" th:href="@{/newCategory}" sec:authorize="hasAuthority('ROLE_ADMIN')">Create new Category</a>
     <div class="categories">

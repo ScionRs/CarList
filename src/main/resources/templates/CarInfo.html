@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/Style.css/">
+    <link rel="stylesheet" href="/CarInfoStyle.css/">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+
+<div th:replace="fragment.html :: header"></div>
+
+<div class="cardsInfo" th:each="brand: ${brands}" enctype="multipart/form-data">
+
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath()}}" alt="Car-Image" width="800px" height="500px"/></div>
+                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath2()}}" alt="Car-Image" width="800px" height="500px"/></div>
+                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath3()}}" alt="Car-Image" width="800px" height="500px"/></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+        </div>
+
+        <div class="info">
+            <table>
+                <tr>
+                    <th>Model:</th>
+                    <th th:text="${brand.model}"></th>
+                </tr>
+               <tr>
+                   <th>Year:</th>
+                   <th th:text="${brand.year}"></th>
+               </tr>
+                <tr>
+                    <th>Body:</th>
+                    <th th:text="${brand.bodyType}"></th>
+                </tr>
+                <tr>
+                    <th>Transmission:</th>
+                    <th th:text="${brand.transmission}"></th>
+                </tr>
+                <tr>
+                    <th>Price:</th>
+                    <th th:text="${brand.price}"></th>
+                </tr>
+
+            </table>
+
+        </div>
+
+    <div class = "desc">
+        <h1>Description:</h1>
+        <hr>
+        <p th:text="${brand.description}"></p>
+    </div>
+
+    <div th:replace="fragment :: footer"></div>
+
+    </div>
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+</script>
+</body>
+</html>

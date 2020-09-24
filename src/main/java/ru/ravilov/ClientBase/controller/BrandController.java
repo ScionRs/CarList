@@ -1,5 +1,6 @@
 package ru.ravilov.ClientBase.controller;
 
+import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import ru.ravilov.ClientBase.model.Brand;
+import ru.ravilov.ClientBase.model.BrandCategory;
+import ru.ravilov.ClientBase.model.FileUploadUtil;
 import ru.ravilov.ClientBase.service.BrandCategoryService;
 import ru.ravilov.ClientBase.service.BrandService;
 
@@ -72,16 +75,18 @@ public class BrandController {
     }
 
     //@RequestMapping(value = "/save", method = RequestMethod.POST)
-    @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("brands") Brand brands,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+   /* @PostMapping("/save")
+    public String saveProduct(@ModelAttribute("brands") Brand brands,@RequestParam("fileImage") MultipartFile multipartFile,@RequestParam("extraImage") MultipartFile[] extraMultipartFiles) throws IOException {
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         brands.setImage(fileName);
+
         Brand saveBrand = brandService.save(brands);
 
         String uploadDir = "/brand-logos/" + saveBrand.getId();
 
         Path uploadPath = Paths.get(uploadDir);
+
 
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
@@ -93,6 +98,63 @@ public class BrandController {
         } catch (IOException e) {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
+
+        for (MultipartFile extraMultipart : extraMultipartFiles){
+            String extraImageName = StringUtils.cleanPath(extraMultipart.getOriginalFilename());
+            brands.setImage2(extraImageName);
+            brands.setImage3(extraImageName);
+
+            try (InputStream inputStream2 = multipartFile.getInputStream()) {
+                Path filePath2 = uploadPath.resolve(extraImageName);
+                Files.copy(inputStream2, filePath2, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new IOException("Could not save uploaded file: " + extraImageName);
+            }
+        }
+
+        return "redirect:/";
+    } */
+
+    @PostMapping("/save")
+    public String saveProduct(@ModelAttribute("brands") Brand brands,@RequestParam("fileImage") MultipartFile[] multipartFiles) throws IOException {
+
+        int count = 0;
+      for (MultipartFile multipartFile : multipartFiles){
+          String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+          if(count == 0)
+          {
+              brands.setImage(fileName);
+          }
+          if(count == 1) {
+              brands.setImage2(fileName);
+          }
+          if(count == 2) {
+              brands.setImage3(fileName);
+          }
+          count++;
+
+
+          /*if (!Files.exists(uploadPath)) {
+              Files.createDirectories(uploadPath);
+          }
+          try (InputStream inputStream = multipartFile.getInputStream()) {
+              Path filePath = uploadPath.resolve(fileName);
+              Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+          } catch (IOException e) {
+              throw new IOException("Could not save uploaded file: " + fileName);
+          }*/
+
+      }
+        Brand saveBrand = brandService.save(brands);
+
+        String uploadDir = "/brand-logos/" + saveBrand.getId();
+
+        //Path uploadPath = Paths.get(uploadDir);
+
+        for(MultipartFile multipartFile : multipartFiles) {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        }
         return "redirect:/";
     }
 
@@ -100,9 +162,19 @@ public class BrandController {
     public ModelAndView showEditProductForm(@PathVariable(name = "id") Integer id){
         ModelAndView mav = new ModelAndView("edit_brand");
 
-        Optional<Brand> brand = brandService.get(id);
+       Brand brand = brandService.get(id);
         mav.addObject("brand",brand);
         return mav;
+    }
+
+    @GetMapping("/show/{id}")
+    public String showCar(Model model, @PathVariable Integer id){
+
+      Brand brands = brandService.get(id);
+
+      model.addAttribute("brands",brands);
+
+      return "CarInfo";
     }
 
     @GetMapping("/delete/{id}")

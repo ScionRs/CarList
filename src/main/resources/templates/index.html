@@ -8,28 +8,9 @@
 </head>
 
 <body>
-<div class="header">
-
-    <div class="lang">
-    <a th:href="@{/(lang='en_US')}"><img src="/img/us.png"  alt="Us-Flag"></a>
-    <a th:href="@{/(lang='ru_RU')}"><img src="/img/ru.png"  alt="Ru-Flag"></a>
-        <a th:href="@{/(lang='de_De')}"><img src="/img/de.png"  alt="De-Flag"></a>
-    </div>
-
-    <div class="categories-link">
-        <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
-    </div>
-
-    <div class="auth">
-        <a  href="#" th:href="@{/login}" th:text="#{language.auth}" th:if="${#authorization.expression('!isAuthenticated()')}">Registration and
-            Login Module</a>
-        <ul>
-            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Logout</a></li>
-        </ul>
-    </div>
-</div>
 
 
+<div th:replace="fragment.html :: header"></div>
 
 <div class="nav">
 <h1 th:text="#{welcome.message}"></h1>
@@ -66,7 +47,7 @@
                 <li><p>Transmission: <span th:text="${brands.transmission}">Transmission</span></p></li>
                 <li><p>Year: <span th:text="${brands.year}">Year</span></p></li>
                 <li><p>Price: <span th:text="${brands.price}">39000</span></p></li>
-
+                <li><a th:href="@{'/show/' + ${brands.id}}"><button class="btn">Show</button></a></li>
                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                    <!--- <a th:href="@{'/edit/' + ${brands.id}}">Edit</a> --->
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -79,7 +60,7 @@
     <br/>
 </div>
 
-<div th:replace="fragment :: footer"></div>
+<div th:replace="fragment.html :: footer"></div>
 </body>
 <script type="text/javascript">
     function clearSearch() {

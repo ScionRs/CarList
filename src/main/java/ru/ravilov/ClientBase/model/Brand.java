@@ -28,7 +28,14 @@ public class Brand {
 
     private int price;
 
+    private String description;
+
     private String image;
+
+    private String image2;
+
+    private String image3;
+
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
@@ -39,7 +46,20 @@ public class Brand {
         if(image == null || id == null)
             return  null;
         return  "/brand-logos/" + id + "/" + image;
+    }
 
+    @Transient
+    public String getLogoImagePath2(){
+        if(image2 == null || id == null)
+            return  null;
+        return  "/brand-logos/" + id + "/" + image2;
+    }
+
+    @Transient
+    public String getLogoImagePath3(){
+        if(image3 == null || id == null)
+            return  null;
+        return  "/brand-logos/" + id + "/" + image3;
     }
 
 }

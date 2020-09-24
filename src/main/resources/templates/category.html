@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/Style.css"/>
 </head>
 <body>
+
+
+
 <div class="cards" th:each="category: ${brandCategory.brands}" enctype="multipart/form-data">
 <div class="info">
     <div>
@@ -19,6 +22,7 @@
         <li><p>Transmission: <span th:text="${category.transmission}">Transmission</span></p></li>
         <li><p>Year: <span th:text="${category.year}">Year</span></p></li>
         <li><p>Price: <span th:text="${category.price}">39000</span></p></li>
+        <li><a th:href="@{'/show/' + ${category.id}}"><button class="btn">Show</button></a></li>
     </ul>
 </div>
 </div>

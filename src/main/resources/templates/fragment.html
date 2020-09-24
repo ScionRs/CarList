@@ -7,8 +7,30 @@
     <link rel="stylesheet" href="/Style.css"/>
 </head>
 <body>
+<div class="header" th:fragment="header">
+
+    <div class="lang">
+        <a th:href="@{/(lang='en_US')}"><img src="/img/us.png"  alt="Us-Flag"></a>
+        <a th:href="@{/(lang='ru_RU')}"><img src="/img/ru.png"  alt="Ru-Flag"></a>
+        <a th:href="@{/(lang='de_De')}"><img src="/img/de.png"  alt="De-Flag"></a>
+    </div>
+
+    <div class="categories-link">
+        <a th:href="@{/}" th:text="#{language.main}" id="main">Main Page</a>
+        <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
+    </div>
+
+    <div class="auth">
+        <a  href="#" th:href="@{/login}" th:text="#{language.auth}" th:if="${#authorization.expression('!isAuthenticated()')}">Registration and
+            Login Module</a>
+        <ul>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
 <div class="footer" th:fragment="footer">
-<h1>The project was created for educational purposes</h1>
+<h1 th:text="#{language.description}"></h1>
 </div>
 </body>
 </html>

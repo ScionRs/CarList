@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/Style.css/">
 </head>
 <body>
 <h1>Edit Brand</h1>
@@ -26,6 +27,17 @@
             <td><input type="text" th:field="*{bodyType}"></td>
         </tr>
         <tr>
+            <td><p>Transmission:</p></td>
+            <td>
+                <select th:field="*{transmission}">
+                    <option th:value="'Automatic'" th:text="Automatic">Automatic</option>
+                    <option th:value="'Robot'" th:text="Robot">Robot</option>
+                    <option th:value="'Variable'" th:text="Variable">Variable</option>
+                    <option th:value="'Manual'" th:text="Manual">Manual</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>Year:</td>
             <td><input type="text" th:field="*{year}"></td>
         </tr>
@@ -36,6 +48,18 @@
         <tr>
             <td>Image:</td>
             <td><input type="file" name="fileImage" id="fileImage" accept="image/png,image/jpeg"></td>
+        </tr>
+        <tr>
+            <td><p>Image2:</p></td>
+            <td><input type="file" name="fileImage"  accept="image/png,image/jpeg"/></td>
+        </tr>
+        <tr>
+            <td><p>Image3:</p></td>
+            <td><input type="file" name="fileImage"  accept="image/png,image/jpeg"/></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" id="desc" th:field="*{description}"></td>
         </tr>
         <tr>
             <td colspan="2"><button type="submit">Save</button></td>

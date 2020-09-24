@@ -24,8 +24,8 @@ public class BrandService {
     }
 
 
-    public Optional<Brand> get(Integer id) {
-        return brandRepository.findById(id);
+    public Brand get(Integer id) {
+        return brandRepository.findById(id).get();
     }
 
     public void delete(Integer id){
