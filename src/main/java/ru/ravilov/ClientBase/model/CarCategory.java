@@ -11,11 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BrandCategory {
+public class CarCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -24,14 +24,14 @@ public class BrandCategory {
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "brandCategory")
-    private List<Brand> brands;
+    private List<Car> cars;
 
-    public List<Brand> getBrands() {
-        return brands;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void setBrands(List<Brand> brands) {
-        this.brands = brands;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     @Transient

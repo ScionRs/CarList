@@ -1,6 +1,5 @@
 package ru.ravilov.ClientBase.controller;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -9,38 +8,30 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ravilov.ClientBase.model.Brand;
-import ru.ravilov.ClientBase.model.BrandCategory;
+import ru.ravilov.ClientBase.model.Car;
 import ru.ravilov.ClientBase.model.FileUploadUtil;
-import ru.ravilov.ClientBase.service.BrandCategoryService;
-import ru.ravilov.ClientBase.service.BrandService;
+import ru.ravilov.ClientBase.service.CarCategoryService;
+import ru.ravilov.ClientBase.service.CarService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
 
 @Controller
-public class BrandController {
-
-
+public class CarController {
 
     @Autowired
-    private BrandService brandService;
+    private CarService carService;
     @Autowired
-    private BrandCategoryService brandCategoryService;
+    private CarCategoryService carCategoryService;
     
     @GetMapping("/")
     public String viewHomePage(Model model, HttpServletRequest request, @Param("keyword") String keyword){
 
         //List<Brand> brandList = brandService.listAll();
-        List<Brand> brandList = brandService.listAll(keyword);
-        model.addAttribute("brandList",brandList);
+        List<Car> carList = carService.listAll(keyword);
+        model.addAttribute("brandList",carList);
         model.addAttribute("keyword", keyword);
 
 
@@ -67,9 +58,9 @@ public class BrandController {
 
     @GetMapping("/new")
     public String showNewCarProductForm(Model model){
-        Brand brands = new Brand();
-        model.addAttribute("brands",brands);
-        model.addAttribute("categories",brandCategoryService.listAll());
+        Car car = new Car();
+        model.addAttribute("brands",car);
+        model.addAttribute("categories",carCategoryService.listAll());
 
         return "new_brand";
     }
@@ -116,20 +107,20 @@ public class BrandController {
     } */
 
     @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("brands") Brand brands,@RequestParam("fileImage") MultipartFile[] multipartFiles) throws IOException {
+    public String saveProduct(@ModelAttribute("brands") Car car,@RequestParam("fileImage") MultipartFile[] multipartFiles) throws IOException {
 
         int count = 0;
       for (MultipartFile multipartFile : multipartFiles){
           String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
           if(count == 0)
           {
-              brands.setImage(fileName);
+              car.setImage(fileName);
           }
           if(count == 1) {
-              brands.setImage2(fileName);
+              car.setImage2(fileName);
           }
           if(count == 2) {
-              brands.setImage3(fileName);
+              car.setImage3(fileName);
           }
           count++;
 
@@ -145,9 +136,9 @@ public class BrandController {
           }*/
 
       }
-        Brand saveBrand = brandService.save(brands);
+        Car saveCar = carService.save(car);
 
-        String uploadDir = "/brand-logos/" + saveBrand.getId();
+        String uploadDir = "/brand-logos/" + saveCar.getId();
 
         //Path uploadPath = Paths.get(uploadDir);
 
@@ -162,24 +153,24 @@ public class BrandController {
     public ModelAndView showEditProductForm(@PathVariable(name = "id") Integer id){
         ModelAndView mav = new ModelAndView("edit_brand");
 
-       Brand brand = brandService.get(id);
-        mav.addObject("brand",brand);
+       Car car = carService.get(id);
+        mav.addObject("brand",car);
         return mav;
     }
 
     @GetMapping("/show/{id}")
     public String showCar(Model model, @PathVariable Integer id){
 
-      Brand brands = brandService.get(id);
+      Car car = carService.get(id);
 
-      model.addAttribute("brands",brands);
+      model.addAttribute("brands",car);
 
       return "CarInfo";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") Integer id){
-        brandService.delete(id);
+        carService.delete(id);
 
         return "redirect:/";
     }

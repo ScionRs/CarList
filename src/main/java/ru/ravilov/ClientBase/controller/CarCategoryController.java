@@ -6,9 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.ravilov.ClientBase.model.Brand;
-import ru.ravilov.ClientBase.model.BrandCategory;
-import ru.ravilov.ClientBase.service.BrandCategoryService;
+import ru.ravilov.ClientBase.model.CarCategory;
+import ru.ravilov.ClientBase.service.CarCategoryService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,16 +18,16 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Controller
-public class BrandCategoryController {
+public class CarCategoryController {
 
     @Autowired
-    BrandCategoryService brandCategoryService;
+    CarCategoryService carCategoryService;
 
     @GetMapping("/categories")
     public String CategoriesMethod(Model model){
 
-        List<BrandCategory> brandCategoryList = brandCategoryService.listAll();
-        model.addAttribute("brandCategoryList",brandCategoryList);
+        List<CarCategory> carCategoryList = carCategoryService.listAll();
+        model.addAttribute("brandCategoryList",carCategoryList);
         return "categories";
 
     }
@@ -36,9 +35,9 @@ public class BrandCategoryController {
     @GetMapping("/category/{id}")
     public String getCategoryInfo(@PathVariable Integer id,Model model){
 
-        BrandCategory brandCategory = brandCategoryService.get(id);
+        CarCategory carCategory = carCategoryService.get(id);
 
-        model.addAttribute("brandCategory",brandCategory);
+        model.addAttribute("brandCategory",carCategory);
 
         return "category";
     }
@@ -46,20 +45,20 @@ public class BrandCategoryController {
     @GetMapping("/newCategory")
     public String createNewBrandCategory(Model model){
 
-        BrandCategory brandCategory = new BrandCategory();
+        CarCategory carCategory = new CarCategory();
 
-        model.addAttribute("brandCategory",brandCategory);
+        model.addAttribute("brandCategory",carCategory);
 
         return "new_category";
     }
 
     @PostMapping("/saveCategory")
-    public String saveCategory(@ModelAttribute("brandCategory") BrandCategory brandCategory,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+    public String saveCategory(@ModelAttribute("brandCategory") CarCategory carCategory,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
-        BrandCategory brandSave = brandCategoryService.save(brandCategory);
+        CarCategory carSave = carCategoryService.save(carCategory);
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        brandCategory.setImage(fileName);
-        BrandCategory saveBrandCategory = brandCategoryService.save(brandCategory);
+        carCategory.setImage(fileName);
+        CarCategory saveBrandCategory = carCategoryService.save(carCategory);
 
         String uploadDir = "/brand-logos/" + saveBrandCategory.getId();
 

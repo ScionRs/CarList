@@ -10,11 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Brand {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String Brand;
 
@@ -39,7 +39,7 @@ public class Brand {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    private BrandCategory brandCategory;
+    private CarCategory carCategory;
 
     @Transient
     public String getLogoImagePath(){
