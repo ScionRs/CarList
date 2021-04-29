@@ -23,7 +23,6 @@ public class CarService {
         return carRepository.save(car);
     }
 
-
     public Car get(Integer id) {
         return carRepository.findById(id).get();
     }
