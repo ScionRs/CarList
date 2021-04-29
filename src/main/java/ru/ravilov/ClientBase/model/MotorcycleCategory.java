@@ -22,16 +22,12 @@ public class MotorcycleCategory {
 
     private String image;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "brandCategory")
-    private List<Car> cars;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicle_type_id")
+    private VehicleType vehicleType;
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "motoCategory")
+    private List<Motorcycle> motorcycles;
 
     @Transient
     public String getLogoImagePath(){

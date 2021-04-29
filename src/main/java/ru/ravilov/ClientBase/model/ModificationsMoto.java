@@ -101,4 +101,8 @@ public class ModificationsMoto {
     private String tireSize;
     @Column(name="disk_size",nullable = false)
     private String diskSize;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "moto_id")
+    private Motorcycle moto;
 }

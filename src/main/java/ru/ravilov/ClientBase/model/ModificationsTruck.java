@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "modification_auto")
+@Entity(name = "modification_truck")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ModificationsAuto {
+public class ModificationsTruck {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name ="id",nullable = false)
@@ -99,8 +99,6 @@ public class ModificationsAuto {
     private String diskSize;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "car_id")
-    private Car car;
-
-
+    @JoinColumn(name = "truck_id")
+    private Truck truck;
 }

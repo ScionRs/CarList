@@ -22,16 +22,14 @@ public class TruckCategory {
 
     private String image;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "brandCategory")
-    private List<Car> cars;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicle_type_id")
+    private VehicleType vehicleType;
 
-    public List<Car> getCars() {
-        return cars;
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "truckCategory")
+    private List<Truck> truckList;
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
+
 
     @Transient
     public String getLogoImagePath(){

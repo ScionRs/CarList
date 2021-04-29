@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "modification_auto")
 @NoArgsConstructor
@@ -35,6 +36,18 @@ public class Truck {
     private String image2;
 
     private String image3;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "segment_id")
+    private Segment segment;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private TruckCategory truckCategory;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification_truck_id")
+    private List<ModificationsTruck> modificationsTrucks;
+
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)
