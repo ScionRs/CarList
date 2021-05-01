@@ -7,7 +7,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ravilov.ClientBase.model.CarCategory;
+import ru.ravilov.ClientBase.model.VehicleType;
 import ru.ravilov.ClientBase.service.CarCategoryService;
+import ru.ravilov.ClientBase.service.VehicleTypeService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,10 +22,16 @@ import java.util.List;
 @Controller
 public class CarCategoryController {
 
-    @Autowired
-    CarCategoryService carCategoryService;
 
-    @GetMapping("/categories")
+    private CarCategoryService carCategoryService;
+    private VehicleTypeService vehicleTypeService;
+    @Autowired
+    public CarCategoryController(CarCategoryService carCategoryService, VehicleTypeService vehicleTypeService) {
+        this.carCategoryService = carCategoryService;
+        this.vehicleTypeService = vehicleTypeService;
+    }
+
+    @GetMapping("/carCategories")
     public String CategoriesMethod(Model model){
 
         List<CarCategory> carCategoryList = carCategoryService.listAll();
@@ -32,17 +40,17 @@ public class CarCategoryController {
 
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/carCategory/{id}")
     public String getCategoryInfo(@PathVariable Integer id,Model model){
 
         CarCategory carCategory = carCategoryService.get(id);
-
+        model.addAttribute("vehicleType",vehicleTypeService.listAll());
         model.addAttribute("brandCategory",carCategory);
 
         return "category";
     }
 
-    @GetMapping("/newCategory")
+    @GetMapping("/newCarCategory")
     public String createNewBrandCategory(Model model){
 
         CarCategory carCategory = new CarCategory();
@@ -52,7 +60,7 @@ public class CarCategoryController {
         return "new_category";
     }
 
-    @PostMapping("/saveCategory")
+    @PostMapping("/saveCarCategory")
     public String saveCategory(@ModelAttribute("brandCategory") CarCategory carCategory,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
         CarCategory carSave = carCategoryService.save(carCategory);

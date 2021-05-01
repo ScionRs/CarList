@@ -104,7 +104,7 @@ public class TruckController {
     }
 
     @GetMapping("/deleteTruck/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Long id){
+    public String deleteTruck(@PathVariable(name = "id") Long id){
         truckService.delete(id);
 
         return "redirect:/allTrucks";
