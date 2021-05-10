@@ -27,11 +27,6 @@ public class Segment {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "segment")
     private List<Car> cars;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "segment")
-    private List<Motorcycle> motorcycles;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "segment")
-    private List<Truck> trucks;
 
     @Transient
     public String getLogoImagePath(){

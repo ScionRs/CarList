@@ -7,11 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.ravilov.ClientBase.model.CarCategory;
 import ru.ravilov.ClientBase.model.MotorcycleCategory;
-import ru.ravilov.ClientBase.service.CarCategoryService;
 import ru.ravilov.ClientBase.service.MotoCategoryService;
-import ru.ravilov.ClientBase.service.VehicleTypeService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,11 +23,10 @@ public class MotoCategoryController {
 
 
     private MotoCategoryService motoCategoryService;
-    private VehicleTypeService vehicleTypeService;
+
     @Autowired
-    public MotoCategoryController(MotoCategoryService motoCategoryService, VehicleTypeService vehicleTypeService) {
+    public MotoCategoryController(MotoCategoryService motoCategoryService) {
         this.motoCategoryService = motoCategoryService;
-        this.vehicleTypeService = vehicleTypeService;
     }
 
     @GetMapping("/motoCategories")
@@ -46,7 +42,6 @@ public class MotoCategoryController {
     public String getMotoCategoryInfo(@PathVariable Long id, Model model){
 
         MotorcycleCategory motorcycleCategory = motoCategoryService.get(id);
-        model.addAttribute("vehicleType",vehicleTypeService.listAll());
         model.addAttribute("motorcycleCategory",motorcycleCategory);
 
         return "category";

@@ -14,7 +14,6 @@ import java.util.List;
 public class Truck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id",nullable = false)
     private Long id;
 
     private String brand;
@@ -38,15 +37,11 @@ public class Truck {
     private String image3;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "segment_id")
-    private Segment segment;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "truck_id")
     private TruckCategory truckCategory;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "truck")
-    private List<ModificationsTruck> modificationsTrucks;
+    private List<ModificationTruck> modificationTrucks;
 
     @Transient
     public String getLogoImagePath(){

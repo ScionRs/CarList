@@ -23,20 +23,8 @@ public class CarCategory {
 
     private String image;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "vehicle_type_id")
-    private VehicleType vehicleType;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carCategory")
     private List<Car> cars;
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
 
     @Transient
     public String getLogoImagePath(){

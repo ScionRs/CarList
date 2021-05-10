@@ -33,12 +33,10 @@ public class Motorcycle {
     @Column(name = "image3",nullable = false)
     private String image3;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "segment_id")
-    private Segment segment;
+
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "moto_category_id")
     private MotorcycleCategory motoCategory;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "moto")

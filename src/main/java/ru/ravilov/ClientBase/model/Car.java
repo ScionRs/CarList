@@ -49,14 +49,6 @@ public class Car {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "car")
     private List<ModificationAuto> modificationAutos;
 
-    public List<ModificationAuto> getModificationAutos() {
-        return modificationAutos;
-    }
-
-    public void setModificationAutos(List<ModificationAuto> modificationAutos) {
-        this.modificationAutos = modificationAutos;
-    }
-
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)

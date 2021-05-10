@@ -7,9 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ravilov.ClientBase.model.CarCategory;
-import ru.ravilov.ClientBase.model.VehicleType;
 import ru.ravilov.ClientBase.service.CarCategoryService;
-import ru.ravilov.ClientBase.service.VehicleTypeService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,11 +22,10 @@ public class CarCategoryController {
 
 
     private CarCategoryService carCategoryService;
-    private VehicleTypeService vehicleTypeService;
+
     @Autowired
-    public CarCategoryController(CarCategoryService carCategoryService, VehicleTypeService vehicleTypeService) {
+    public CarCategoryController(CarCategoryService carCategoryService) {
         this.carCategoryService = carCategoryService;
-        this.vehicleTypeService = vehicleTypeService;
     }
 
     @GetMapping("/carCategories")
@@ -44,7 +41,6 @@ public class CarCategoryController {
     public String getCategoryInfo(@PathVariable Long id,Model model){
 
         CarCategory carCategory = carCategoryService.get(id);
-        model.addAttribute("vehicleType",vehicleTypeService.listAll());
         model.addAttribute("brandCategory",carCategory);
 
         return "category";

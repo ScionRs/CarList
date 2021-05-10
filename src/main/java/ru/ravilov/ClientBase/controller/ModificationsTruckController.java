@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ravilov.ClientBase.model.ModificationsTruck;
+import ru.ravilov.ClientBase.model.ModificationTruck;
 import ru.ravilov.ClientBase.service.ModificationsTruckService;
 import ru.ravilov.ClientBase.service.TruckService;
 
@@ -29,7 +29,7 @@ public class ModificationsTruckController {
     @GetMapping("/allModifyTruck")
     public String viewAllModifyTruck(Model model, HttpServletRequest request){
 
-        List<ModificationsTruck> modificationsMotoList = modificationsTruckService.listAll();
+        List<ModificationTruck> modificationsMotoList = modificationsTruckService.listAll();
         model.addAttribute("modifyList",modificationsMotoList);
 
         return "modify_truck";
@@ -37,17 +37,17 @@ public class ModificationsTruckController {
 
     @GetMapping("/newModifyTruck")
     public String showNewModifyTruckForm(Model model){
-        ModificationsTruck modificationsTruck = new ModificationsTruck();
-        model.addAttribute("modificationsTruck",modificationsTruck);
+        ModificationTruck modificationTruck = new ModificationTruck();
+        model.addAttribute("modificationsTruck", modificationTruck);
         model.addAttribute("truck",truckService.listAll());
 
         return "new_modify_truck";
     }
 
     @PostMapping("/saveModifyTruck")
-    public String saveModifyTruck(@ModelAttribute("modifyTruck") ModificationsTruck modificationsMoto) {
+    public String saveModifyTruck(@ModelAttribute("modifyTruck") ModificationTruck modificationsMoto) {
 
-        ModificationsTruck saveModifyMoto = modificationsTruckService.save(modificationsMoto);
+        ModificationTruck saveModifyMoto = modificationsTruckService.save(modificationsMoto);
 
         return "redirect:/allModifyTruck";
     }
@@ -56,15 +56,15 @@ public class ModificationsTruckController {
     public ModelAndView showEditModifyTruckForm(@PathVariable(name = "id") Long id){
         ModelAndView mav = new ModelAndView("edit_modify_truck");
 
-        ModificationsTruck modificationsTruck = modificationsTruckService.get(id);
-        mav.addObject("modifyTruck",modificationsTruck);
+        ModificationTruck modificationTruck = modificationsTruckService.get(id);
+        mav.addObject("modifyTruck", modificationTruck);
         return mav;
     }
 
     @GetMapping("/showModifyTruck/{id}")
     public String showModifyTruck(Model model, @PathVariable Long id){
 
-        ModificationsTruck modifyTruck = modificationsTruckService.get(id);
+        ModificationTruck modifyTruck = modificationsTruckService.get(id);
 
         model.addAttribute("modifyTruck",modifyTruck);
 

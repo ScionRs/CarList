@@ -21,12 +21,10 @@ public class MotoController {
 
     private MotoService motoService;
     private MotoCategoryService motoCategoryService;
-    private SegmentService segmentService;
     @Autowired
-    public MotoController(MotoService motoService, MotoCategoryService motoCategoryService, SegmentService segmentService) {
+    public MotoController(MotoService motoService, MotoCategoryService motoCategoryService) {
         this.motoService = motoService;
         this.motoCategoryService = motoCategoryService;
-        this.segmentService = segmentService;
     }
 
     @GetMapping("/allMoto")
@@ -43,7 +41,6 @@ public class MotoController {
         Motorcycle moto = new Motorcycle();
         model.addAttribute("moto",moto);
         model.addAttribute("motoCategories",motoCategoryService.listAll());
-        model.addAttribute("segment",segmentService.listAll());
 
         return "new_moto";
     }

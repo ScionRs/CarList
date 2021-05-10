@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ravilov.ClientBase.model.TruckCategory;
 import ru.ravilov.ClientBase.service.TruckCategoryService;
-import ru.ravilov.ClientBase.service.VehicleTypeService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,12 +22,10 @@ public class TruckCategoryController {
 
 
     private TruckCategoryService truckCategoryService;
-    private VehicleTypeService vehicleTypeService;
 
     @Autowired
-    public TruckCategoryController(TruckCategoryService truckCategoryService, VehicleTypeService vehicleTypeService) {
+    public TruckCategoryController(TruckCategoryService truckCategoryService) {
         this.truckCategoryService = truckCategoryService;
-        this.vehicleTypeService = vehicleTypeService;
     }
 
     @GetMapping("/truckCategories")
@@ -54,7 +51,6 @@ public class TruckCategoryController {
 
         TruckCategory truckCategory = new TruckCategory();
         model.addAttribute("truckCategory",truckCategory);
-        model.addAttribute("vehicleType",vehicleTypeService.listAll());
 
         return "new_truck_category";
     }

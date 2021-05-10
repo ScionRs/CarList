@@ -25,12 +25,10 @@ public class TruckController {
 
     private TruckService truckService;
     private TruckCategoryService truckCategoryService;
-    private SegmentService segmentService;
     @Autowired
-    public TruckController(TruckService truckService, TruckCategoryService truckCategoryService, SegmentService segmentService) {
+    public TruckController(TruckService truckService, TruckCategoryService truckCategoryService) {
         this.truckService = truckService;
         this.truckCategoryService = truckCategoryService;
-        this.segmentService = segmentService;
     }
 
     @GetMapping("/allTrucks")
@@ -47,7 +45,6 @@ public class TruckController {
        Truck truck = new Truck();
         model.addAttribute("truck",truck);
         model.addAttribute("truckCategories",truckCategoryService.listAll());
-        model.addAttribute("segment",segmentService.listAll());
 
         return "new_truck";
     }

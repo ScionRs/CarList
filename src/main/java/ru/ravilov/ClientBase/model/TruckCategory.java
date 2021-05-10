@@ -22,9 +22,6 @@ public class TruckCategory {
 
     private String image;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "vehicle_type_id")
-    private VehicleType vehicleType;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "truckCategory")
     private List<Truck> truckList;
