@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ravilov.ClientBase.model.ModificationsMoto;
+import ru.ravilov.ClientBase.model.ModificationMoto;
 import ru.ravilov.ClientBase.service.ModificationsMotoService;
 import ru.ravilov.ClientBase.service.MotoService;
 
@@ -28,25 +28,25 @@ public class ModificationsMotoController {
     @GetMapping("/allModifyMoto")
     public String viewAllModifyMoto(Model model, HttpServletRequest request){
 
-        List<ModificationsMoto> modificationsMotoList = modificationsMotoService.listAll();
-        model.addAttribute("modifyList",modificationsMotoList);
+        List<ModificationMoto> modificationMotoList = modificationsMotoService.listAll();
+        model.addAttribute("modifyList", modificationMotoList);
 
         return "modify_moto";
     }
 
     @GetMapping("/newModifyMoto")
     public String showNewModifyMotoForm(Model model){
-        ModificationsMoto modificationsMoto = new ModificationsMoto();
-        model.addAttribute("modificationsMoto",modificationsMoto);
+        ModificationMoto modificationMoto = new ModificationMoto();
+        model.addAttribute("modificationsMoto", modificationMoto);
         model.addAttribute("moto",motoService.listAll());
 
         return "new_modify_moto";
     }
 
     @PostMapping("/saveModifyMoto")
-    public String saveModifyMoto(@ModelAttribute("modifyMoto") ModificationsMoto modificationsMoto) {
+    public String saveModifyMoto(@ModelAttribute("modifyMoto") ModificationMoto modificationMoto) {
 
-        ModificationsMoto saveModifyMoto = modificationsMotoService.save(modificationsMoto);
+        ModificationMoto saveModifyMoto = modificationsMotoService.save(modificationMoto);
 
         return "redirect:/allModifyMoto";
     }
@@ -55,15 +55,15 @@ public class ModificationsMotoController {
     public ModelAndView showEditModifyMotoForm(@PathVariable(name = "id") Long id){
         ModelAndView mav = new ModelAndView("edit_modify_moto");
 
-        ModificationsMoto modificationsMoto = modificationsMotoService.get(id);
-        mav.addObject("modifyMoto",modificationsMoto);
+        ModificationMoto modificationMoto = modificationsMotoService.get(id);
+        mav.addObject("modifyMoto", modificationMoto);
         return mav;
     }
 
     @GetMapping("/showModifyMoto/{id}")
     public String showModifyMoto(Model model, @PathVariable Long id){
 
-        ModificationsMoto modifyMoto = modificationsMotoService.get(id);
+        ModificationMoto modifyMoto = modificationsMotoService.get(id);
 
         model.addAttribute("modifyMoto",modifyMoto);
 

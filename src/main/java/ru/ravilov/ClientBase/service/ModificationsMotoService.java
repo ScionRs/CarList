@@ -2,10 +2,8 @@ package ru.ravilov.ClientBase.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.ravilov.ClientBase.model.ModificationsMoto;
-import ru.ravilov.ClientBase.model.ModificationsTruck;
+import ru.ravilov.ClientBase.model.ModificationMoto;
 import ru.ravilov.ClientBase.repository.ModificationsMotoRepository;
-import ru.ravilov.ClientBase.repository.ModificationsTruckRepository;
 
 import java.util.List;
 
@@ -18,15 +16,15 @@ public class ModificationsMotoService {
         this.modificationsMotoRepository = modificationsMotoRepository;
     }
 
-    public List<ModificationsMoto> listAll(){
+    public List<ModificationMoto> listAll(){
         return  modificationsMotoRepository.findAll();
     }
 
-    public ModificationsMoto save(ModificationsMoto modificationsMoto){
-        return modificationsMotoRepository.save(modificationsMoto);
+    public ModificationMoto save(ModificationMoto modificationMoto){
+        return modificationsMotoRepository.save(modificationMoto);
     }
 
-    public ModificationsMoto get(Long id){
+    public ModificationMoto get(Long id){
         return modificationsMotoRepository.findById(id).get();
     }
 

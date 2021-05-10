@@ -22,13 +22,13 @@ public class VehicleType {
     @Column(name = "image",nullable = false)
     private String image;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicle_type")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicleType")
     private List<CarCategory> carCategoryList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicle_type")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicleType")
     private List<MotorcycleCategory> motorcycleCategoryList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicle_type")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "vehicleType")
     private List<TruckCategory> truckCategoryList;
 
     @Transient

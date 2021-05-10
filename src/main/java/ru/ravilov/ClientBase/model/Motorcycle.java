@@ -39,10 +39,10 @@ public class Motorcycle {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    private Motorcycle motorcycleCategory;
+    private MotorcycleCategory motoCategory;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification_moto_id")
-    private List<ModificationsMoto> modificationsMotos;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "moto")
+    private List<ModificationMoto> modificationMotos;
 
     @Transient
     public String getLogoImagePath(){

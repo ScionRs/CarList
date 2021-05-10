@@ -45,7 +45,7 @@ public class Truck {
     @JoinColumn(name = "category_id")
     private TruckCategory truckCategory;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification_truck_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "truck")
     private List<ModificationsTruck> modificationsTrucks;
 
     @Transient

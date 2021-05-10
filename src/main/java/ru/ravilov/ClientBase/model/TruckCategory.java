@@ -29,8 +29,6 @@ public class TruckCategory {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "truckCategory")
     private List<Truck> truckList;
 
-
-
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)

@@ -27,7 +27,7 @@ public class CarCategory {
     @JoinColumn(name = "vehicle_type_id")
     private VehicleType vehicleType;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "brandCategory")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carCategory")
     private List<Car> cars;
 
     public List<Car> getCars() {

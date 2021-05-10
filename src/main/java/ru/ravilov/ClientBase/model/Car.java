@@ -39,14 +39,14 @@ public class Car {
 
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "car_category_id")
     private CarCategory carCategory;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "segment_id")
     private Segment segment;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "car")
     private List<ModificationAuto> modificationAutos;
 
     public List<ModificationAuto> getModificationAutos() {

@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ravilov.ClientBase.model.ModificationsMoto;
 import ru.ravilov.ClientBase.model.ModificationsTruck;
-import ru.ravilov.ClientBase.service.ModificationsMotoService;
 import ru.ravilov.ClientBase.service.ModificationsTruckService;
-import ru.ravilov.ClientBase.service.MotoService;
 import ru.ravilov.ClientBase.service.TruckService;
 
 import javax.servlet.http.HttpServletRequest;

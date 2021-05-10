@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ModificationsMoto {
+public class ModificationMoto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name ="id",nullable = false)
