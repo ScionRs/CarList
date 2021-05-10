@@ -48,7 +48,7 @@ public class ModificationsTruckController {
     }
 
     @PostMapping("/saveModifyTruck")
-    public String saveModifyTruck(@ModelAttribute("modifyMoto") ModificationsTruck modificationsMoto) {
+    public String saveModifyTruck(@ModelAttribute("modifyTruck") ModificationsTruck modificationsMoto) {
 
         ModificationsTruck saveModifyMoto = modificationsTruckService.save(modificationsMoto);
 

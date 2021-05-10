@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.ravilov.ClientBase.model.ModificationsAuto;
 import ru.ravilov.ClientBase.model.ModificationsMoto;
-import ru.ravilov.ClientBase.service.CarService;
-import ru.ravilov.ClientBase.service.ModificationsAutoService;
 import ru.ravilov.ClientBase.service.ModificationsMotoService;
 import ru.ravilov.ClientBase.service.MotoService;
 
@@ -37,7 +34,7 @@ public class ModificationsMotoController {
         return "modify_moto";
     }
 
-    @GetMapping("/newModifyAuto")
+    @GetMapping("/newModifyMoto")
     public String showNewModifyMotoForm(Model model){
         ModificationsMoto modificationsMoto = new ModificationsMoto();
         model.addAttribute("modificationsMoto",modificationsMoto);
@@ -46,7 +43,7 @@ public class ModificationsMotoController {
         return "new_modify_moto";
     }
 
-    @PostMapping("/saveModifyAuto")
+    @PostMapping("/saveModifyMoto")
     public String saveModifyMoto(@ModelAttribute("modifyMoto") ModificationsMoto modificationsMoto) {
 
         ModificationsMoto saveModifyMoto = modificationsMotoService.save(modificationsMoto);

@@ -41,7 +41,7 @@ public class CarCategoryController {
     }
 
     @GetMapping("/carCategory/{id}")
-    public String getCategoryInfo(@PathVariable Integer id,Model model){
+    public String getCategoryInfo(@PathVariable Long id,Model model){
 
         CarCategory carCategory = carCategoryService.get(id);
         model.addAttribute("vehicleType",vehicleTypeService.listAll());

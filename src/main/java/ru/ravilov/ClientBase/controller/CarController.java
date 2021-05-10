@@ -27,12 +27,11 @@ public class CarController {
     private CarCategoryService carCategoryService;
     
     @GetMapping("/")
-    public String viewHomePage(Model model, HttpServletRequest request, @Param("keyword") String keyword){
+    public String viewHomePage(Model model, HttpServletRequest request){
 
         //List<Brand> brandList = brandService.listAll();
-        List<Car> carList = carService.listAll(keyword);
+        List<Car> carList = carService.listAll();
         model.addAttribute("brandList",carList);
-        model.addAttribute("keyword", keyword);
 
 
 
@@ -150,7 +149,7 @@ public class CarController {
     }
 
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditProductForm(@PathVariable(name = "id") Integer id){
+    public ModelAndView showEditProductForm(@PathVariable(name = "id") Long id){
         ModelAndView mav = new ModelAndView("edit_brand");
 
        Car car = carService.get(id);
@@ -159,7 +158,7 @@ public class CarController {
     }
 
     @GetMapping("/show/{id}")
-    public String showCar(Model model, @PathVariable Integer id){
+    public String showCar(Model model, @PathVariable Long id){
 
       Car car = carService.get(id);
 
@@ -169,7 +168,7 @@ public class CarController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Integer id){
+    public String deleteProduct(@PathVariable(name = "id") Long id){
         carService.delete(id);
 
         return "redirect:/";

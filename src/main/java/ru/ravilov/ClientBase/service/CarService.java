@@ -23,18 +23,12 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public Car get(Integer id) {
+    public Car get(Long id) {
         return carRepository.findById(id).get();
     }
 
-    public void delete(Integer id){
+    public void delete(Long id){
         carRepository.deleteById(id);
     }
 
-    public List<Car> listAll(String keyword){
-        if(keyword != null){
-            return carRepository.search(keyword);
-        }
-        return carRepository.findAll();
-    }
 }

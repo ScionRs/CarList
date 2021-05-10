@@ -8,7 +8,5 @@ import ru.ravilov.ClientBase.model.Car;
 import java.util.List;
 
 @Repository
-public interface CarRepository extends JpaRepository<Car,Integer> {
-    @Query("SELECT p FROM Brand p WHERE CONCAT(p.Brand, ' ', p.model, ' ', p.BodyType, ' ', p.year, ' ',p.transmission, ' ',p.price) LIKE %?1%")
-    public List<Car> search(String keyword);
+public interface CarRepository extends JpaRepository<Car,Long> {
 }

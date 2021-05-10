@@ -46,8 +46,16 @@ public class Car {
     @JoinColumn(name = "segment_id")
     private Segment segment;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification_auto_id")
-    private List<ModificationsAuto> modificationsAutos;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "modification")
+    private List<ModificationAuto> modificationAutos;
+
+    public List<ModificationAuto> getModificationAutos() {
+        return modificationAutos;
+    }
+
+    public void setModificationAutos(List<ModificationAuto> modificationAutos) {
+        this.modificationAutos = modificationAutos;
+    }
 
     @Transient
     public String getLogoImagePath(){

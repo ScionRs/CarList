@@ -99,7 +99,7 @@ public class MotoController {
         return "motoInfo";
     }
 
-    @GetMapping("/deleteTruck/{id}")
+    @GetMapping("/deleteMoto/{id}")
     public String deleteMoto(@PathVariable(name = "id") Long id){
         motoService.delete(id);
 

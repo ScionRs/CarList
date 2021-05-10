@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "modification_truck")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

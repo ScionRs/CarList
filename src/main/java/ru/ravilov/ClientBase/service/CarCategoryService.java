@@ -17,9 +17,9 @@ public class CarCategoryService {
 
     public CarCategory save(CarCategory category){return  carCategoryRepository.save(category);}
 
-    public CarCategory get(Integer id) { return carCategoryRepository.findById(id).get();}
+    public CarCategory get(Long id) { return carCategoryRepository.findById(id).get();}
 
-    public void delete(Integer id){ carCategoryRepository.deleteById(id);
+    public void delete(Long id){ carCategoryRepository.deleteById(id);
     }
 
 }
