@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="main-card">
+        <div class="main-card__item" th:each="car: ${carList}" enctype="multipart/form-data">
+            <a th:href="@{'/showCar/' + ${car.id}}">
+                <div class="main-card__img">
+                    <img  th:src="@{${car.getLogoImagePath()}}" alt="Car-Image"/>
+                </div>
+                <div class="main-card__info">
+                    <h1 th:text="${car.brand}"><span th:text="${car.model}"></span></h1>
+                    <h4 th:text="${car.price}">От 2 790 000  ₽</h4>
+                    <h4 th:text="${car.bodyType}">Универсал</h4>
+                    <h4 th:text="${car.country}">Германия</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

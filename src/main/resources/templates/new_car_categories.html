@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="input__block">
+        <form action="#" th:action="@{/saveCarCategory}" th:object="${carCategory}" enctype="multipart/form-data" method="post">
+                <div class="input__form">
+                    <div class="input__form-text"><p>Название:</p></div>
+                    <div class="input__form-value"><input type="text" th:field="*{name}" ></div>
+                </div>
+                <div class="input__form">
+                    <div class="input__form-text"><p>Страна:</p></div>
+                    <div class="input__form-value"><input type="text" th:field="*{country}" ></div>
+                </div>
+            <div class="input__form">
+                <div class="input__form-text" id="label__fix"><p>Введите название автомобиля:</p></div>
+                <div class="input__form-upload">
+                    <label class="input__form-file">
+                        Загрузить фотографию
+                        <input type="file" name="fileImage" accept="image/png,image/jpeg"/>
+                    </label>
+                </div>
+            </div>
+            <div class="input__form">
+                <button class="input__form-btn" type="submit">Сохранить</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
