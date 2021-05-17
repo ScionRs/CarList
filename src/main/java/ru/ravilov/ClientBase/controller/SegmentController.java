@@ -75,13 +75,13 @@ public class SegmentController {
         } catch (IOException e) {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
-        return "redirect:/segments";
+        return "redirect:/allSegments";
     }
 
     @GetMapping("/deleteSegment/{id}")
     public String deleteSegment(@PathVariable(name = "id") Long id){
         segmentService.delete(id);
 
-        return "redirect:/segments";
+        return "redirect:/allSegments";
     }
 }

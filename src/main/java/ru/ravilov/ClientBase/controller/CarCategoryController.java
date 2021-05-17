@@ -20,7 +20,6 @@ import java.util.List;
 @Controller
 public class CarCategoryController {
 
-
     private CarCategoryService carCategoryService;
 
     @Autowired
@@ -32,8 +31,8 @@ public class CarCategoryController {
     public String CategoriesMethod(Model model){
 
         List<CarCategory> carCategoryList = carCategoryService.listAll();
-        model.addAttribute("brandCategoryList",carCategoryList);
-        return "categories";
+        model.addAttribute("carCategoryList",carCategoryList);
+        return "car_categories";
 
     }
 
@@ -41,9 +40,9 @@ public class CarCategoryController {
     public String getCategoryInfo(@PathVariable Long id,Model model){
 
         CarCategory carCategory = carCategoryService.get(id);
-        model.addAttribute("brandCategory",carCategory);
+        model.addAttribute("carCategory",carCategory);
 
-        return "category";
+        return "car_category";
     }
 
     @GetMapping("/newCarCategory")
@@ -51,13 +50,13 @@ public class CarCategoryController {
 
         CarCategory carCategory = new CarCategory();
 
-        model.addAttribute("brandCategory",carCategory);
+        model.addAttribute("carCategory",carCategory);
 
-        return "new_category";
+        return "new_car_categories";
     }
 
     @PostMapping("/saveCarCategory")
-    public String saveCategory(@ModelAttribute("brandCategory") CarCategory carCategory,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+    public String saveCategory(@ModelAttribute("carCategory") CarCategory carCategory,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
         CarCategory carSave = carCategoryService.save(carCategory);
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -78,6 +77,6 @@ public class CarCategoryController {
         } catch (IOException e) {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
-        return "redirect:/categories";
+        return "redirect:/carCategories";
     }
 }

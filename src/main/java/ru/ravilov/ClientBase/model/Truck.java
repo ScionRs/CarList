@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "modification_auto")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

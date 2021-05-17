@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/Style.css"/>
     <link rel="stylesheet" href="/StyleCustom.css"/>
 </head>
 
@@ -14,27 +13,42 @@
 <div th:replace="fragment.html :: header"></div>
 
 <div class="nav">
-<h1 th:text="#{welcome.message}"></h1>
 <div  class="create-new">
     <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Доступны права администратора:</p>
-    <a href="new"  th:text="#{language.add}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Create new Brand Product</a>
+    <a href="new"  th:text="#{language.add}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый автомобиль</a>
     <br/>
-    <a th:href="@{/showUserList}" th:text="#{language.show_users}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Show Users</a>
+    <a th:href="@{/showUserList}"  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Show Users</a>
 </div>
 </div>
+<!--
+<a th:href="@{/}" th:text="#{language.main}" id="main">Main Page</a>
+<a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
+-->
+<div class="content">
+    <div class="content-card">
+        <a href="#">
+            <img src="/images/motorcycle2.png" alt="motorcycle">
+            <div class="content-card__item">
+                <h1>Мотоциклы</h1>
+            </div>
+        </a>
+    </div>
 
-
-
-<div class="search">
-<form th:action="@{/}">
-     <input type="text" th:placeholder="#{language.placeholder}" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
-
-    <input type="submit" th:value="#{language.search}"  id="btn-search" />
-
-    <input type="button" th:value="#{language.clear}" id="btnClear" onclick="clearSearch()" />
-</form>
+    <div class="content-card">
+        <img src="/images/hyundai.png" alt="">
+        <div class="content-card__item">
+            <h1>Автомобили</h1>
+        </div>
+    </div>
+    <div class="content-card">
+        <img src="/images/truck.png" alt="">
+        <div class="content-card__item">
+            <h1>Грузовики</h1>
+        </div>
+    </div>
 </div>
 
+<!--
 <div class="cards" th:each="brands: ${brandList}" enctype="multipart/form-data">
     <div class="info">
         <div>
@@ -50,7 +64,7 @@
                 <li><p>Price: <span th:text="${brands.price}">39000</span></p></li>
                 <li><a th:href="@{'/show/' + ${brands.id}}"><button class="btn">Show</button></a></li>
                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                   <!--- <a th:href="@{'/edit/' + ${brands.id}}">Edit</a> --->
+                    <a th:href="@{'/edit/' + ${brands.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/delete/' + ${brands.id}}">Delete</a>
                 </div>
@@ -59,13 +73,9 @@
         </div>
     </div>
     <br/>
-</div>
+</div> -->
 
 <div th:replace="fragment.html :: footer"></div>
 </body>
-<script type="text/javascript">
-    function clearSearch() {
-        window.location = "[[@{/}]]";
-    }
-</script>
+
 </html>

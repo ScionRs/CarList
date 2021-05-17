@@ -12,6 +12,7 @@ import ru.ravilov.ClientBase.model.Car;
 import ru.ravilov.ClientBase.model.FileUploadUtil;
 import ru.ravilov.ClientBase.service.CarCategoryService;
 import ru.ravilov.ClientBase.service.CarService;
+import ru.ravilov.ClientBase.service.SegmentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -21,17 +22,22 @@ import java.util.Locale;
 @Controller
 public class CarController {
 
-    @Autowired
     private CarService carService;
-    @Autowired
     private CarCategoryService carCategoryService;
-    
-    @GetMapping("/")
+    private SegmentService segmentService;
+    @Autowired
+    public CarController(CarService carService, CarCategoryService carCategoryService, SegmentService segmentService) {
+        this.carService = carService;
+        this.carCategoryService = carCategoryService;
+        this.segmentService = segmentService;
+    }
+
+    @GetMapping("/cars")
     public String viewHomePage(Model model, HttpServletRequest request){
 
         //List<Brand> brandList = brandService.listAll();
         List<Car> carList = carService.listAll();
-        model.addAttribute("brandList",carList);
+        model.addAttribute("carList",carList);
 
 
 
@@ -52,16 +58,17 @@ public class CarController {
             Locale locale = new Locale(language);
             System.out.println(language + ":" + locale.getDisplayLanguage());
         }*/
-        return "index";
+        return "cars";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/newCar")
     public String showNewCarProductForm(Model model){
         Car car = new Car();
-        model.addAttribute("brands",car);
-        model.addAttribute("categories",carCategoryService.listAll());
+        model.addAttribute("car",car);
+        model.addAttribute("carCategories",carCategoryService.listAll());
+        model.addAttribute("segments",segmentService.listAll());
 
-        return "new_brand";
+        return "new_car";
     }
 
     //@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -105,8 +112,8 @@ public class CarController {
         return "redirect:/";
     } */
 
-    @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("brands") Car car,@RequestParam("fileImage") MultipartFile[] multipartFiles) throws IOException {
+    @PostMapping("/saveCar")
+    public String saveProduct(@ModelAttribute("car") Car car,@RequestParam("fileImage") MultipartFile[] multipartFiles) throws IOException {
 
         int count = 0;
       for (MultipartFile multipartFile : multipartFiles){
@@ -145,29 +152,29 @@ public class CarController {
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         }
-        return "redirect:/";
+        return "redirect:/cars";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editCar/{id}")
     public ModelAndView showEditProductForm(@PathVariable(name = "id") Long id){
         ModelAndView mav = new ModelAndView("edit_brand");
 
        Car car = carService.get(id);
-        mav.addObject("brand",car);
+        mav.addObject("car",car);
         return mav;
     }
 
-    @GetMapping("/show/{id}")
+    @GetMapping("/showCar/{id}")
     public String showCar(Model model, @PathVariable Long id){
 
       Car car = carService.get(id);
 
-      model.addAttribute("brands",car);
+      model.addAttribute("car",car);
 
       return "CarInfo";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/deleteCar/{id}")
     public String deleteProduct(@PathVariable(name = "id") Long id){
         carService.delete(id);
 

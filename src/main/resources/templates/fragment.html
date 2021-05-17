@@ -7,40 +7,34 @@
     <link rel="stylesheet" href="/StyleCustom.css"/>
 </head>
 <body>
-<div class="header" th:fragment="header">
 
-    <div class="categories-link">
-        <a th:href="@{/}" th:text="#{language.main}" id="main">Main Page</a>
-        <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
-    </div>
-
-    <div class="auth">
-
-    </div>
-</div>
-
-<header class="header">
+<header class="header" th:fragment="header">
     <div class="container">
         <nav class="header-nav">
-            <div class="header-nav__logo"><a class="logo" href="">CarWiki <br><span>все об автомобилях</span></a></div>
-            <div class="header-nav__item"><a class="header-nav__link" href="">Главная</a></div>
-            <div class="header-nav__item"><a class="header-nav__link" href="">Мотоциклы</a></div>
-            <div class="header-nav__item"><a class="header-nav__link" href="">Легковые</a></div>
-            <div class="header-nav__item"><a class="header-nav__link" href="">Грузовики</a></div>
-            <div class="header-nav__item"><a class="header-nav__link" href="">Сегменты</a></div>
-            <div class="header-nav__auth"><a id="auth">
-                <div>
-                <a  href="#" th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}">Войти</a>
-                <ul>
-                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Выход</a></li>
-                </ul>
-            </div> <div><img src="img/login.png" alt=""></div></a></div>
+            <div class="header-nav__logo"><a class="logo" th:href="@{/}">CarWiki <br><span>все об автомобилях</span></a></div>
+            <div class="header-nav__item"><a class="header-nav__link" th:href="@{/}">Главная</a></div>
+            <div class="header-nav__item"><a class="header-nav__link" th:href="@{/motoCategories}">Мотоциклы</a></div>
+            <div class="header-nav__item"><a class="header-nav__link" th:href="@{/carCategories}">Легковые</a></div>
+            <div class="header-nav__item"><a class="header-nav__link" th:href="@{/truckCategories}">Грузовики</a></div>
+            <div class="header-nav__item"><a class="header-nav__link" th:href="@{/allSegments}">Сегменты</a></div>
+            <div class="header-nav__auth"><a  href="#" th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" id="auth">Войти
+
+                <div><img src="/images/login.png" alt=""></div></a></div>
         </nav>
     </div>
 </header>
 
-<div class="footer" th:fragment="footer">
-<h1 th:text="#{language.description}"></h1>
-</div>
+<footer th:fragment="footer">
+    <div class="container">
+        <nav class="footer-nav">
+            <div class="footer-nav__logo"><a href="" class="logo">CarWiki <br><span>все об автомобилях</span></a></div>
+            <div class="footer-nav__item"><a class="header-nav__link" href="">Главная</a></div>
+            <div class="footer-nav__item"><a class="header-nav__link" href="">Мотоциклы</a></div>
+            <div class="footer-nav__item"><a class="header-nav__link" href="">Легковые</a></div>
+            <div class="footer-nav__item"><a class="header-nav__link" href="">Грузовики</a></div>
+            <div class="footer-nav__item"><a class="header-nav__link" href="">Сегменты</a></div>
+        </nav>
+    </div>
+</footer>
 </body>
 </html>

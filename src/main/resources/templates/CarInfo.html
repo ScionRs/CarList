@@ -5,8 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/Style.css/">
-    <link rel="stylesheet" href="/CarInfoStyle.css/">
+    <link rel="stylesheet" href="/StyleCustom.css/">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
@@ -14,63 +13,105 @@
 
 <div th:replace="fragment.html :: header"></div>
 
-<div class="cardsInfo" th:each="brand: ${brands}" enctype="multipart/form-data">
 
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath()}}" alt="Car-Image" width="800px" height="500px"/></div>
-                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath2()}}" alt="Car-Image" width="800px" height="500px"/></div>
-                <div class="swiper-slide"><img  th:src="@{${brand.getLogoImagePath3()}}" alt="Car-Image" width="800px" height="500px"/></div>
+    <div class="container">
+        <div class="page" th:each="car: ${car}" enctype="multipart/form-data">
+            <div class="page__title">
+                <h1 th:text="${car.brand}"><span th:text="${car.model}"></span></h1>
+                <hr>
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="page__img-section">
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide"><img  th:src="@{${car.getLogoImagePath()}}" alt="Car-Image" /></div>
+                        <div class="swiper-slide"><img  th:src="@{${car.getLogoImagePath2()}}" alt="Car-Image" /></div>
+                        <div class="swiper-slide"><img  th:src="@{${car.getLogoImagePath3()}}" alt="Car-Image" /></div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
 
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
 
-            <!-- If we need scrollbar -->
+                    <!-- If we need scrollbar -->
+                </div>
+            </div>
+            <div class="page__tab">
+                <button class="page__tab-tablinks" onclick="selectContent(event,'overview')" id="defaultOpen">Основная информация</button>
+                <button class="page__tab-tablinks" onclick="selectContent(event,'modifications')">Модификации</button>
+            </div>
+            <div id="overview" class="tabcontent">
+                <div class="page__description-title">
+                    <div><h2 th:text="${car.brand}"></h2></div>
+                    <div><h2 th:text="${car.model}"></h2></div>
+                    <div><h2> - обзор автомобиля</h2></div>
+                </div>
+                <hr>
+                <p th:text="${car.description}"></p>
+            </div>
+            <div id="modifications" class="tabcontent">
+                <div class="page__modify">
+                    <div class="page__table-title">
+                        <h2>Audi A6 40 TFSI S tronic</h2>
+                        <hr>
+                    </div>
+                    <table class="page__table">
+                        <tr>
+                            <th>Цена</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Модельный год</th>
+                            <th>2016</th>
+                        </tr>
+                        <tr>
+                            <th>Тип кузова</th>
+                            <th>Универсал</th>
+                        </tr>
+                    </table>
+                    <button class="page__table-button">
+                        Показать все характеристики
+                    </button>
+                </div>
+                <div class="page__modify">
+                    <div class="page__table-title">
+                        <h2>Audi A6 40 TFSI S tronic</h2>
+                        <hr>
+                    </div>
+                    <table class="page__table">
+                        <tr>
+                            <th>Цена</th>
+                            <th>от 10000 до 150000</th>
+                        </tr>
+                        <tr>
+                            <th>Модельный год</th>
+                            <th>2016</th>
+                        </tr>
+                        <tr>
+                            <th>Тип кузова</th>
+                            <th>Универсал</th>
+                        </tr>
+                        <tr>
+                            <th>Длина, мм</th>
+                            <th>4458</th>
+                        </tr>
+                        <tr>
+                            <th>Ширина, мм</th>
+                            <th>1796</th>
+                        </tr>
+                    </table>
+                    <button class="page__table-button">
+                        Показать все характеристики
+                    </button>
+                </div>
+            </div>
         </div>
-
-        <div class="info">
-            <table>
-                <tr>
-                    <th>Model:</th>
-                    <th th:text="${brand.model}"></th>
-                </tr>
-               <tr>
-                   <th>Year:</th>
-                   <th th:text="${brand.year}"></th>
-               </tr>
-                <tr>
-                    <th>Body:</th>
-                    <th th:text="${brand.bodyType}"></th>
-                </tr>
-                <tr>
-                    <th>Transmission:</th>
-                    <th th:text="${brand.transmission}"></th>
-                </tr>
-                <tr>
-                    <th>Price:</th>
-                    <th th:text="${brand.price}"></th>
-                </tr>
-
-            </table>
-
-        </div>
-
-    <div class = "desc">
-        <h1>Description:</h1>
-        <hr>
-        <p th:text="${brand.description}"></p>
     </div>
 
-    <div th:replace="fragment :: footer"></div>
-
-    </div>
-
+    <div th:replace="fragment.html :: footer"></div>
 <script>
     var mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
@@ -93,6 +134,29 @@
             el: '.swiper-scrollbar',
         },
     })
+</script>
+<script>
+    function selectContent(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("page__tab-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
 </script>
 </body>
 </html>
