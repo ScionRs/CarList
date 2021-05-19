@@ -45,7 +45,7 @@ public class ModificationsAutoController {
 
         ModificationAuto saveModifyAuto = modificationsAutoService.save(modificationAuto);
 
-        return "redirect:/allModifyAuto";
+        return "redirect:/";
     }
 
     @GetMapping("/editModifyAuto/{id}")

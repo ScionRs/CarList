@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="page">
+        <div class="page__modify" th:each="car : ${modifyAuto}">
+            <div class="page__table-title">
+                <h2 th:text="${car.modification}">Audi A6 40 TFSI S tronic</h2>
+                <hr>
+            </div>
+            <table class="page__table">
+                <tr>
+                    <th>Минимальная цена</th>
+                    <th th:text="${car.price}"></th>
+                </tr>
+                <tr>
+                    <th>Модельный год</th>
+                    <th th:text="${car.year}">2016</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${car.modification}">Универсал</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${car.bodyType}">4458</th>
+                </tr>
+                <tr>
+                    <th>Количество дверей</th>
+                    <th th:text="${car.numberOfDoors}">1796</th>
+                </tr>
+                <tr>
+                    <th>Количество мест</th>
+                    <th th:text="${car.numberOfSeats}">1796</th>
+                </tr>
+                <tr>
+                    <th>Страна сборки: </th>
+                    <th th:text="${car.buildCountry}">1796</th>
+                </tr>
+                <tr>
+                    <th>Гарантия</th>
+                    <th th:text="${car.guarantee}">1796</th>
+                </tr>
+                <tr>
+                    <th>Вид топлива</th>
+                    <th th:text="${car.typeOfFuel}">1796</th>
+                </tr>
+                <tr>
+                    <th>Время разгона до 100км/ч</th>
+                    <th th:text="${car.accelerationTime}">1796</th>
+                </tr>
+                <tr>
+                    <th>Максимальная скорость</th>
+                    <th th:text="${car.maxSpeed}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход в городском цикле:</th>
+                    <th th:text="${car.fuelUrbanCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход на трассе:</th>
+                    <th th:text="${car.fuelHigwayCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход в смешанном цикле:</th>
+                    <th th:text="${car.fuelMixedCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Снаряженная масса:</th>
+                    <th th:text="${car.curbWeight}">1796</th>
+                </tr>
+                <tr>
+                    <th>Полная масса:</th>
+                    <th th:text="${car.fullMass}">1796</th>
+                </tr>
+                <tr>
+                    <th>Грузоподьемность:</th>
+                    <th th:text="${car.carryingCapacity}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем багажника:</th>
+                    <th th:text="${car.trunkVolume}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем топливного бака:</th>
+                    <th th:text="${car.fuelTankVolume}">1796</th>
+                </tr>
+                <tr>
+                    <th>Длина, мм</th>
+                    <th th:text="${car.length}">1796</th>
+                </tr>
+                <tr>
+                    <th>Ширина, мм</th>
+                    <th th:text="${car.width}">1796</th>
+                </tr>
+                <tr>
+                    <th>Высота, мм</th>
+                    <th th:text="${car.height}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип двигателя</th>
+                    <th th:text="${car.engineType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Число цилиндров / расположение</th>
+                    <th th:text="${car.numberOfCyclindersAndArrangement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем двигателя</th>
+                    <th th:text="${car.engineDisplacement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Крутящий момент, Н·м / оборотах</th>
+                    <th th:text="${car.torque}">1796</th>
+                </tr>
+                <tr>
+                    <th>Привод</th>
+                    <th th:text="${car.driveUnit}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип трансмиссии</th>
+                    <th th:text="${car.transmissionType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Усилитель руля</th>
+                    <th th:text="${car.powerSteering}">1796</th>
+                </tr>
+                <tr>
+                    <th>Электронные системы</th>
+                    <th th:text="${car.electronicControlSystems}">1796</th>
+                </tr>
+                <tr>
+                    <th>Электронные системы</th>
+                    <th th:text="${car.electronicControlSystems}">1796</th>
+                </tr>
+                <tr>
+                    <th>Управление климатом</th>
+                    <th th:text="${car.climateControl}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передняя подвеска</th>
+                    <th th:text="${car.frontSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задняя подвеска</th>
+                    <th th:text="${car.rearSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передние тормоза</th>
+                    <th th:text="${car.frontBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задние тормоза</th>
+                    <th th:text="${car.rearBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер шин</th>
+                    <th th:text="${car.tireSize}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер дисков</th>
+                    <th th:text="${car.diskSize}">1796</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

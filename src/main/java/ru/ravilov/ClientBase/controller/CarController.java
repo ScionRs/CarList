@@ -12,6 +12,7 @@ import ru.ravilov.ClientBase.model.Car;
 import ru.ravilov.ClientBase.model.FileUploadUtil;
 import ru.ravilov.ClientBase.service.CarCategoryService;
 import ru.ravilov.ClientBase.service.CarService;
+import ru.ravilov.ClientBase.service.ModificationsAutoService;
 import ru.ravilov.ClientBase.service.SegmentService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,39 +26,26 @@ public class CarController {
     private CarService carService;
     private CarCategoryService carCategoryService;
     private SegmentService segmentService;
+    private ModificationsAutoService modificationsAutoService;
     @Autowired
-    public CarController(CarService carService, CarCategoryService carCategoryService, SegmentService segmentService) {
+    public CarController(CarService carService, CarCategoryService carCategoryService, SegmentService segmentService, ModificationsAutoService modificationsAutoService) {
         this.carService = carService;
         this.carCategoryService = carCategoryService;
         this.segmentService = segmentService;
+        this.modificationsAutoService = modificationsAutoService;
     }
+
+
 
     @GetMapping("/cars")
     public String viewHomePage(Model model, HttpServletRequest request){
 
-        //List<Brand> brandList = brandService.listAll();
+
         List<Car> carList = carService.listAll();
         model.addAttribute("carList",carList);
+        model.addAttribute("carModifications",modificationsAutoService);
 
 
-
-        Locale currentLocale = request.getLocale();
-        String countryCode = currentLocale.getCountry();
-        String countyName = currentLocale.getDisplayCountry();
-
-        String langCode = currentLocale.getLanguage();
-        String langName = currentLocale.getDisplayLanguage();
-
-        System.out.println(countryCode + ": " + countyName);
-        System.out.println(langCode + ": " + langName);
-
-       /* System.out.println("======");
-        String[] languages = Locale.getISOLanguages();
-
-        for (String language: languages){
-            Locale locale = new Locale(language);
-            System.out.println(language + ":" + locale.getDisplayLanguage());
-        }*/
         return "cars";
     }
 

@@ -9,7 +9,7 @@
 <div th:replace="fragment.html :: header"></div>
 <div class="container">
     <div class="main-card">
-        <div class="main-card__item" th:each="segment: ${segment.cars}" enctype="multipart/form-data">
+        <div class="main-card__item" th:each="segment: ${segment.carList}" enctype="multipart/form-data">
             <a href="#">
                 <div class="main-card__img">
                     <img  th:src="@{${segment.getLogoImagePath()}}" alt="Car-Image"/>

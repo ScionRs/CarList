@@ -3,6 +3,8 @@ package ru.ravilov.ClientBase.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +26,7 @@ public class CarCategory {
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carCategory")
+    @Fetch(FetchMode.SUBSELECT)
     private List<Car> cars;
 
     @Transient

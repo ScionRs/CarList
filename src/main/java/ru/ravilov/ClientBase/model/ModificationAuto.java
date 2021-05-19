@@ -55,13 +55,13 @@ public class ModificationAuto {
 
     private String curbWeight;
 
-    private int fullMass;
+    private String fullMass;
 
-    private int carryingCapacity;
+    private String carryingCapacity;
 
-    private int trunkVolume;
+    private String trunkVolume;
 
-    private int fuelTankVolume;
+    private String fuelTankVolume;
 
     private String engineType;
 
@@ -97,7 +97,7 @@ public class ModificationAuto {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
-    private Car car;
+    private Car cars;
 
 
 }
