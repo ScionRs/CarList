@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="page">
+        <div class="page__modify" th:each="moto : ${modifyMoto}">
+            <div class="page__table-title">
+                <h2 th:text="${moto.modification}">Audi A6 40 TFSI S tronic</h2>
+                <hr>
+            </div>
+            <table class="page__table">
+                <tr>
+                    <th>Минимальная цена</th>
+                    <th th:text="${moto.price}"></th>
+                </tr>
+                <tr>
+                    <th>Модельный год</th>
+                    <th th:text="${moto.year}">2016</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${moto.modification}">Универсал</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${moto.bodyType}">4458</th>
+                </tr>
+                <tr>
+                    <th>Страна сборки: </th>
+                    <th th:text="${moto.buildCountry}">1796</th>
+                </tr>
+                <tr>
+                    <th>Вид топлива</th>
+                    <th th:text="${moto.typeOfFuel}">1796</th>
+                </tr>
+                <tr>
+                    <th>Максимальная скорость</th>
+                    <th th:text="${moto.maxSpeed}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход в городском цикле:</th>
+                    <th th:text="${moto.fuelCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Снаряженная масса:</th>
+                    <th th:text="${moto.curbWeight}">1796</th>
+                </tr>
+                <tr>
+                    <th>Длина, мм</th>
+                    <th th:text="${moto.length}">1796</th>
+                </tr>
+                <tr>
+                    <th>Ширина, мм</th>
+                    <th th:text="${moto.width}">1796</th>
+                </tr>
+                <tr>
+                    <th>Высота, мм</th>
+                    <th th:text="${moto.height}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип двигателя</th>
+                    <th th:text="${moto.engineType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Число цилиндров / расположение</th>
+                    <th th:text="${moto.numberOfCyclindersAndArrangement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем двигателя</th>
+                    <th th:text="${moto.engineDisplacement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Крутящий момент, Н·м / оборотах</th>
+                    <th th:text="${moto.torque}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип трансмиссии</th>
+                    <th th:text="${moto.transmissionType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Электронные системы</th>
+                    <th th:text="${moto.electronicControlSystems}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передняя подвеска</th>
+                    <th th:text="${moto.frontSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задняя подвеска</th>
+                    <th th:text="${moto.rearSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передние тормоза</th>
+                    <th th:text="${moto.frontBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задние тормоза</th>
+                    <th th:text="${moto.rearBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер шин</th>
+                    <th th:text="${moto.tireSize}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер дисков</th>
+                    <th th:text="${moto.diskSize}">1796</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

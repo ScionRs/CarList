@@ -48,7 +48,7 @@ public class ModificationsMotoController {
 
         ModificationMoto saveModifyMoto = modificationsMotoService.save(modificationMoto);
 
-        return "redirect:/allModifyMoto";
+        return "redirect:/";
     }
 
     @GetMapping("/editModifyMoto/{id}")

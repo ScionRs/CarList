@@ -26,6 +26,8 @@ public class Motorcycle {
     private String transmission;
     @Column(name ="price",nullable = false)
     private int price;
+    @Column(name ="description",nullable = false)
+    private String description;
     @Column(name = "image",nullable = false)
     private String image;
     @Column(name = "image2",nullable = false)

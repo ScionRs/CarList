@@ -21,19 +21,23 @@ public class MotoController {
 
     private MotoService motoService;
     private MotoCategoryService motoCategoryService;
+    private ModificationsMotoService modificationsMotoService;
     @Autowired
-    public MotoController(MotoService motoService, MotoCategoryService motoCategoryService) {
+    public MotoController(MotoService motoService, MotoCategoryService motoCategoryService, ModificationsMotoService modificationsMotoService) {
         this.motoService = motoService;
         this.motoCategoryService = motoCategoryService;
+        this.modificationsMotoService = modificationsMotoService;
     }
+
+
 
     @GetMapping("/allMoto")
     public String viewAllMoto(Model model, HttpServletRequest request){
 
-        List<Motorcycle> truckList = motoService.listAll();
-        model.addAttribute("truckList",truckList);
-
-        return "moto";
+        List<Motorcycle> motoList = motoService.listAll();
+        model.addAttribute("motoList",motoList);
+        model.addAttribute("motoModifications",modificationsMotoService);
+        return "motos";
     }
 
     @GetMapping("/newMoto")
@@ -79,19 +83,19 @@ public class MotoController {
 
     @GetMapping("/editMoto/{id}")
     public ModelAndView showEditMotoForm(@PathVariable(name = "id") Long id){
-        ModelAndView mav = new ModelAndView("edit_brand");
+        ModelAndView mav = new ModelAndView("edit_moto");
 
-        Motorcycle truck = motoService.get(id);
-        mav.addObject("truck",truck);
+        Motorcycle moto = motoService.get(id);
+        mav.addObject("moto",moto);
         return mav;
     }
 
     @GetMapping("/showMoto/{id}")
     public String showMoto(Model model, @PathVariable Long id){
 
-        Motorcycle truck = motoService.get(id);
+        Motorcycle moto = motoService.get(id);
 
-        model.addAttribute("truck",truck);
+        model.addAttribute("moto",moto);
 
         return "motoInfo";
     }

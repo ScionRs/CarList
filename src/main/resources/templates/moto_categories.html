@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="main-card">
+        <div class="category-card__item" th:each="category : ${motorcycleCategoryList}" enctype="multipart/form-data">
+            <a th:href="@{'/motoCategory/' + ${category.id}}">
+                <div class="category-card__img">
+                    <img th:src="@{${category.getLogoImagePath()}}">
+                </div>
+                <div class="main-card__info">
+                    <h1 th:text="${category.name}"></h1>
+                    <h4  th:text="${category.country}"></h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

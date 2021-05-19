@@ -34,7 +34,7 @@ public class MotoCategoryController {
 
         List<MotorcycleCategory> motorcycleCategoryList = motoCategoryService.listAll();
         model.addAttribute("motorcycleCategoryList",motorcycleCategoryList);
-        return "categories";
+        return "moto_categories";
 
     }
 
@@ -44,7 +44,7 @@ public class MotoCategoryController {
         MotorcycleCategory motorcycleCategory = motoCategoryService.get(id);
         model.addAttribute("motorcycleCategory",motorcycleCategory);
 
-        return "category";
+        return "moto_category";
     }
 
     @GetMapping("/newMotoCategory")
@@ -54,7 +54,7 @@ public class MotoCategoryController {
 
         model.addAttribute("motorcycleCategory",motorcycleCategory);
 
-        return "new_category";
+        return "new_moto_categories";
     }
 
     @PostMapping("/saveMotoCategory")
@@ -78,6 +78,6 @@ public class MotoCategoryController {
         } catch (IOException e) {
             throw new IOException("Could not save uploaded file: " + fileName);
         }
-        return "redirect:/categories";
+        return "redirect:/motoCategories";
     }
 }
