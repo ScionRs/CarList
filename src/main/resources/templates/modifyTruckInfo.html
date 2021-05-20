@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="page">
+        <div class="page__modify" th:each="truck : ${modifyTruck}">
+            <div class="page__table-title">
+                <h2 th:text="${truck.modification}">Audi A6 40 TFSI S tronic</h2>
+                <hr>
+            </div>
+            <table class="page__table">
+                <tr>
+                    <th>Минимальная цена</th>
+                    <th th:text="${truck.price}"></th>
+                </tr>
+                <tr>
+                    <th>Модельный год</th>
+                    <th th:text="${truck.year}">2016</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${truck.modification}">Универсал</th>
+                </tr>
+                <tr>
+                    <th>Тип кузова</th>
+                    <th th:text="${truck.bodyType}">4458</th>
+                </tr>
+                <tr>
+                    <th>Количество дверей</th>
+                    <th th:text="${truck.numberOfDoors}">1796</th>
+                </tr>
+                <tr>
+                    <th>Количество мест</th>
+                    <th th:text="${truck.numberOfSeats}">1796</th>
+                </tr>
+                <tr>
+                    <th>Страна сборки: </th>
+                    <th th:text="${truck.buildCountry}">1796</th>
+                </tr>
+                <tr>
+                    <th>Гарантия</th>
+                    <th th:text="${truck.guarantee}">1796</th>
+                </tr>
+                <tr>
+                    <th>Вид топлива</th>
+                    <th th:text="${truck.typeOfFuel}">1796</th>
+                </tr>
+                <tr>
+                    <th>Время разгона до 100км/ч</th>
+                    <th th:text="${truck.accelerationTime}">1796</th>
+                </tr>
+                <tr>
+                    <th>Максимальная скорость</th>
+                    <th th:text="${truck.maxSpeed}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход в городском цикле:</th>
+                    <th th:text="${truck.fuelUrbanCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход на трассе:</th>
+                    <th th:text="${truck.fuelHigwayCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Расход в смешанном цикле:</th>
+                    <th th:text="${truck.fuelMixedCycle}">1796</th>
+                </tr>
+                <tr>
+                    <th>Снаряженная масса:</th>
+                    <th th:text="${truck.curbWeight}">1796</th>
+                </tr>
+                <tr>
+                    <th>Полная масса:</th>
+                    <th th:text="${truck.fullMass}">1796</th>
+                </tr>
+                <tr>
+                    <th>Грузоподьемность:</th>
+                    <th th:text="${truck.carryingCapacity}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем топливного бака:</th>
+                    <th th:text="${truck.fuelTankVolume}">1796</th>
+                </tr>
+                <tr>
+                    <th>Длина, мм</th>
+                    <th th:text="${truck.length}">1796</th>
+                </tr>
+                <tr>
+                    <th>Ширина, мм</th>
+                    <th th:text="${truck.width}">1796</th>
+                </tr>
+                <tr>
+                    <th>Высота, мм</th>
+                    <th th:text="${truck.height}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип двигателя</th>
+                    <th th:text="${truck.engineType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Число цилиндров / расположение</th>
+                    <th th:text="${truck.numberOfCyclindersAndArrangement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Обьем двигателя</th>
+                    <th th:text="${truck.engineDisplacement}">1796</th>
+                </tr>
+                <tr>
+                    <th>Крутящий момент, Н·м / оборотах</th>
+                    <th th:text="${truck.torque}">1796</th>
+                </tr>
+                <tr>
+                    <th>Привод</th>
+                    <th th:text="${truck.driveUnit}">1796</th>
+                </tr>
+                <tr>
+                    <th>Тип трансмиссии</th>
+                    <th th:text="${truck.transmissionType}">1796</th>
+                </tr>
+                <tr>
+                    <th>Усилитель руля</th>
+                    <th th:text="${truck.powerSteering}">1796</th>
+                </tr>
+                <tr>
+                    <th>Электронные системы</th>
+                    <th th:text="${truck.electronicControlSystems}">1796</th>
+                </tr>
+                <tr>
+                    <th>Электронные системы</th>
+                    <th th:text="${truck.electronicControlSystems}">1796</th>
+                </tr>
+                <tr>
+                    <th>Управление климатом</th>
+                    <th th:text="${truck.climateControl}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передняя подвеска</th>
+                    <th th:text="${truck.frontSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задняя подвеска</th>
+                    <th th:text="${truck.rearSuspension}">1796</th>
+                </tr>
+                <tr>
+                    <th>Передние тормоза</th>
+                    <th th:text="${truck.frontBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Задние тормоза</th>
+                    <th th:text="${truck.rearBrakes}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер шин</th>
+                    <th th:text="${truck.tireSize}">1796</th>
+                </tr>
+                <tr>
+                    <th>Размер дисков</th>
+                    <th th:text="${truck.diskSize}">1796</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

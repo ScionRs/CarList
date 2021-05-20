@@ -3,16 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/Style.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="/StyleCustom.css"/>
 </head>
 <body>
+<div th:replace="fragment.html :: header"></div>
 
+<div class="container">
+    <div class="login__form">
+        <form th:action="@{/registration}" method="post" th:object="${user}">
+            <div th:if="${param.success}">
+                <div class="alert alert-info"><p>Вы успешно присоединилсь к пользователям сайта!</p>
+                    <a href="/">Вернуться на главную страницу</a></div>
+            </div>
+        <h1>Регистрация нового пользователя</h1>
+        <div class="login__form-component">
+            <p>Имя</p>
+            <input  th:field="*{firstName}" type="text">
+        </div>
+        <div class="login__form-component">
+            <p>Фамилия</p>
+            <input th:field="*{lastName}" type="text">
+        </div>
+        <div class="login__form-component">
+            <p>Email</p>
+            <input th:field="*{email}" type="text">
+        </div>
+        <div class="login__form-component">
+            <p>Введите пароль</p>
+            <input th:field="*{password}" type="password">
+        </div>
+        <div class="login__form-btn">
+            <div><button class="reg_btn" type="submit">Зарегестрироваться</button></div>
+            <div><a class="login_href" th:href="@{/login}">Войдите</a></div>
+        </div>
+        </form>
+    </div>
+</div>
 
-
+<div th:replace="fragment.html :: footer"></div>
+<!--
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -31,12 +64,11 @@
 
 <br>
 <br>
-<!-- Create HTML registration form -->
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-
-            <!-- success message -->
             <div th:if="${param.success}">
                 <div class="alert alert-info">You've successfully registered
                     to our awesome app!</div>
@@ -78,5 +110,6 @@
         </div>
     </div>
 </div>
+-->
 </body>
 </html>

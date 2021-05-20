@@ -44,7 +44,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/showUserList").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/showUserList/**").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/deleteUser/**").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/newCategory").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newCarCategory").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newCar").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newModifyAuto").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newModifyMoto").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newModifyTruck").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newMotoCategory").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newMoto").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newTruckCategory").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newTruck").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newSegment").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/**").permitAll()
                 .antMatchers(
                 "/registration**",

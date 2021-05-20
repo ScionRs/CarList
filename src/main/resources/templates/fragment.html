@@ -18,8 +18,9 @@
             <div class="header-nav__item"><a class="header-nav__link" th:href="@{/truckCategories}">Грузовики</a></div>
             <div class="header-nav__item"><a class="header-nav__link" th:href="@{/allSegments}">Сегменты</a></div>
             <div class="header-nav__auth"><a  href="#" th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" id="auth">Войти
-
-                <div><img src="/images/login.png" alt=""></div></a></div>
+                <div><img src="/images/login.png" alt=""></div></a>
+            </div>
+            <div сlass="header-nav__auth" sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Выйти</a></div>
         </nav>
     </div>
 </header>

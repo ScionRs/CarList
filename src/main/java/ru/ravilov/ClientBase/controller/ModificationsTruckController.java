@@ -49,7 +49,7 @@ public class ModificationsTruckController {
 
         ModificationTruck saveModifyMoto = modificationsTruckService.save(modificationsMoto);
 
-        return "redirect:/allModifyTruck";
+        return "redirect:/";
     }
 
     @GetMapping("/editModifyTruck/{id}")
@@ -75,7 +75,7 @@ public class ModificationsTruckController {
     public String deleteModifyTruck(@PathVariable(name = "id") Long id){
         modificationsTruckService.delete(id);
 
-        return "redirect:/allModifyTruck";
+        return "redirect:/";
     }
 }
 

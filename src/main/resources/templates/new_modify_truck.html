@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="input__block">
+        <form action="#" th:action="@{/saveModifyTruck}" th:object="${modificationsTruck}" enctype="multipart/form-data" method="post">
+            <div class="input__form">
+                <div class="input__form-text"><p>Марка автомобиля:</p>
+                </div>
+                <div class="input__form-select">
+                    <select th:field="*{truck}">
+                        <option th:each="carId : ${truck}" th:value="${carId.id}" th:text="${carId.model}">
+                    </select>
+                </div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Марка:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{brand}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Модель:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{model}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Модификация:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{modification}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Год:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{year}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Тип кузова:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{bodyType}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Количество дверей:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{numberOfDoors}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Количество мест:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{numberOfSeats}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Страна сборки:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{buildCountry}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Гарантия:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{guarantee}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Цена:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{price}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Тип топлива:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{typeOfFuel}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Время разгона до 100км/ч:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{accelerationTime}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Максимальная скорость:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{maxSpeed}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Расход топлива в городском цикле:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{fuelUrbanCycle}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Расход топлива на трассе:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{fuelHigwayCycle}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Расход топлива в смешанном цикле:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{fuelMixedCycle}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Запас хода на одном баке:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{powerReserve}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Длина:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{length}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Ширина:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{width}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Высота:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{height}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Снаряженная масса:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{curbWeight}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Полная масса:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{fullMass}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Подьемность:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{carryingCapacity}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Обьем бензобака:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{fuelTankVolume}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Тип двигателя:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{engineType}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Количество цилиндров:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{numberOfCyclindersAndArrangement}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Мощность двигателя:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{enginePower}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Обьем двигателя:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{engineDisplacement}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Крутящий момент:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{torque}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Климат контроль:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{climateControl}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Привод:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{driveUnit}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Тип трансмиссии:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{transmissionType}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Усилитель руля:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{powerSteering}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Электронные системы управления:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{electronicControlSystems}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Передняя подвеска:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{frontSuspension}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Задняя подвеска:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{rearSuspension}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Передние тормоза:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{frontBrakes}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Задние тормоза:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{rearBrakes}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Размер шин:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{tireSize}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Размер дисков:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{diskSize}" ></div>
+            </div>
+            <div class="input__form">
+                <button class="input__form-btn" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

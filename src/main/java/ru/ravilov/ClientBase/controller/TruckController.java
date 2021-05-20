@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.ravilov.ClientBase.model.Car;
 import ru.ravilov.ClientBase.model.FileUploadUtil;
 import ru.ravilov.ClientBase.model.Truck;
+import ru.ravilov.ClientBase.service.ModificationsTruckService;
 import ru.ravilov.ClientBase.service.SegmentService;
 import ru.ravilov.ClientBase.service.TruckCategoryService;
 import ru.ravilov.ClientBase.service.TruckService;
@@ -25,17 +26,22 @@ public class TruckController {
 
     private TruckService truckService;
     private TruckCategoryService truckCategoryService;
+    private ModificationsTruckService modificationsTruckService;
     @Autowired
-    public TruckController(TruckService truckService, TruckCategoryService truckCategoryService) {
+    public TruckController(TruckService truckService, TruckCategoryService truckCategoryService, ModificationsTruckService modificationsTruckService) {
         this.truckService = truckService;
         this.truckCategoryService = truckCategoryService;
+        this.modificationsTruckService = modificationsTruckService;
     }
+
+
 
     @GetMapping("/allTrucks")
     public String viewAllTrucks(Model model, HttpServletRequest request){
 
         List<Truck> truckList = truckService.listAll();
         model.addAttribute("truckList",truckList);
+        model.addAttribute("truckModifications",modificationsTruckService);
 
         return "trucks";
     }
@@ -78,12 +84,12 @@ public class TruckController {
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         }
-        return "redirect:/truckList";
+        return "redirect:/";
     }
 
     @GetMapping("/editTruck/{id}")
     public ModelAndView showEditTruckForm(@PathVariable(name = "id") Long id){
-        ModelAndView mav = new ModelAndView("edit_brand");
+        ModelAndView mav = new ModelAndView("edit_truck");
 
         Truck truck = truckService.get(id);
         mav.addObject("truck",truck);

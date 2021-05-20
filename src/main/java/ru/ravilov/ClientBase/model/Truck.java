@@ -30,6 +30,8 @@ public class Truck {
 
     private String description;
 
+    private String country;
+
     private String image;
 
     private String image2;

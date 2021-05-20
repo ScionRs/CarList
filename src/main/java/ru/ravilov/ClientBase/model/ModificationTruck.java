@@ -35,10 +35,9 @@ public class ModificationTruck {
     private String width;
     private String height;
     private String curbWeight;
-    private int fullMass;
-    private int carryingCapacity;
-    private int trunkVolume;
-    private int fuelTankVolume;
+    private String fullMass;
+    private String carryingCapacity;
+    private String fuelTankVolume;
     private String engineType;
     private String numberOfCyclindersAndArrangement;
     private String enginePower;
@@ -46,7 +45,6 @@ public class ModificationTruck {
     private String torque;
     private String driveUnit;
     private String transmissionType;
-
     private String powerSteering;
     private String electronicControlSystems;
     private String climateControl;

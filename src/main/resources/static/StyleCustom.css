@@ -9,7 +9,7 @@ a {
 }
 @font-face {
     font-family: Open Sans Extra Bold;
-    src: url("font/OpenSans-ExtraBold.ttf");
+    src: url("/font/OpenSans-ExtraBold.ttf");
 }
 body {
     margin: 0;
@@ -367,13 +367,25 @@ body {
     background-color: #FFD700;
 }
 
+.login__form-btn {
+    display: flex;
+}
+
+.login_href {
+    display: block;
+    color: cornflowerblue;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}
+
 .login_btn {
+    width: 10em;
     background-color: #66CDAA;
     color: #FFFFFF;
     padding: 1rem;
     font-size: 1.3rem;
     outline: none;
-    width: 20%;
     border: 0;
     margin: 2rem 1rem;
     box-shadow: 7px 7px 10px -3px rgba(34, 60, 80, 0.6);
@@ -383,6 +395,25 @@ body {
     background-color: #FF8C00;
 }
 .login_btn:focus {
+    background-color: #FFD700;
+}
+
+.reg_btn {
+    background-color: #66CDAA;
+    color: #FFFFFF;
+    padding: 1rem;
+    font-size: 1.3rem;
+    outline: none;
+    border: 0;
+    margin: 2rem 1rem;
+    box-shadow: 7px 7px 10px -3px rgba(34, 60, 80, 0.6);
+    cursor: pointer;
+    width: 12em;
+}
+.reg_btn:hover {
+    background-color: #FF8C00;
+}
+.reg_btn:focus {
     background-color: #FFD700;
 }
 
