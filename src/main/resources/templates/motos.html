@@ -15,7 +15,10 @@
                     <img  th:src="@{${moto.getLogoImagePath()}}" alt="Car-Image"/>
                 </div>
                 <div class="main-card__info">
-                    <h1 th:text="${moto.brand}"><span th:text="${moto.model}"></span></h1>
+                    <div class="main-card__info-title">
+                        <div th:text="${moto.brand}"><h1>Audi</h1></div>
+                        <div th:text="${moto.model}"><h1>A6</h1></div>
+                    </div>
                     <h4 th:text="${moto.price}">От 2 790 000  ₽</h4>
                 </div>
             </a>

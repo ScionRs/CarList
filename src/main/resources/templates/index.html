@@ -12,21 +12,20 @@
 
 <div th:replace="fragment.html :: header"></div>
 
-<div class="nav">
-<div  class="create-new">
-    <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Доступны права администратора:</p>
-    <a href="new"  th:text="#{language.add}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый автомобиль</a>
-    <br/>
-    <a th:href="@{/showUserList}"  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Show Users</a>
-</div>
-</div>
+    <div class="create-new">
+        <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
+        <a  th:href="@{/newCarCategory}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый бренд автомобиля </a>
+        <a  th:href="@{/newCar}"  th:text="#{language.add}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый автомобиль</a>
+        <a th:href="@{/showUserList}"  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Показать пользоваталей</a>
+    </div>
+
 <!--
 <a th:href="@{/}" th:text="#{language.main}" id="main">Main Page</a>
 <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
 -->
 <div class="content">
     <div class="content-card">
-        <a href="#">
+        <a href="/motoCategories">
             <img src="/images/motorcycle2.png" alt="motorcycle">
             <div class="content-card__item">
                 <h1>Мотоциклы</h1>
@@ -35,16 +34,21 @@
     </div>
 
     <div class="content-card">
+        <a href="/carCategories">
         <img src="/images/hyundai.png" alt="">
         <div class="content-card__item">
             <h1>Автомобили</h1>
         </div>
+        </a>
     </div>
+
     <div class="content-card">
+        <a href="/truckCategories">
         <img src="/images/truck.png" alt="">
         <div class="content-card__item">
             <h1>Грузовики</h1>
         </div>
+        </a>
     </div>
 </div>
 

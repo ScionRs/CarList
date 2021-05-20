@@ -20,7 +20,8 @@
             <div class="header-nav__auth"><a  href="#" th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" id="auth">Войти
                 <div><img src="/images/login.png" alt=""></div></a>
             </div>
-            <div сlass="header-nav__auth" sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{language.logout}">Выйти</a></div>
+            <div сlass="header-nav__auth" sec:authorize="isAuthenticated()" style="font-size: 1.5rem; margin-top: 10px"><a th:href="@{/logout}" style = "color: #66CDAA; display: block;
+    margin-top: 1.1rem; font-family: 'Open Sans';" th:text="#{language.logout}">Выйти</a></div>
         </nav>
     </div>
 </header>

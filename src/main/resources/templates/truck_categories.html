@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +8,12 @@
 </head>
 <body>
 <div th:replace="fragment.html :: header"></div>
+<div class="create-new">
+    <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
+    <a  th:href="@{/newTruckCategory}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый бренд грузовика</a>
+    <a  th:href="@{/newTruck}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый грузовик</a>
+    <a  th:href="@{/newModifyTruck}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новую комлектацию грузовика</a>
+</div>
 <div class="container">
     <div class="main-card">
         <div class="category-card__item" th:each="category : ${truckCategoryList}" enctype="multipart/form-data">

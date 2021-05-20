@@ -15,7 +15,10 @@
                     <img  th:src="@{${truck.getLogoImagePath()}}" alt="Car-Image"/>
                 </div>
                 <div class="main-card__info">
-                    <h1 th:text="${truck.brand}"><span th:text="${car.model}"></span></h1>
+                    <div class="main-card__info-title">
+                        <div th:text="${truck.brand}"><h1>Audi</h1></div>
+                        <div th:text="${truck.model}"><h1>A6</h1></div>
+                    </div>
                     <h4 th:text="${truck.price}">От 2 790 000  ₽</h4>
                     <h4 th:text="${truck.bodyType}">Универсал</h4>
                     <h4 th:text="${truck.country}">Германия</h4>
