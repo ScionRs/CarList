@@ -15,7 +15,10 @@
                     <img  th:src="@{${category.getLogoImagePath()}}" alt="Car-Image"/>
                 </div>
                 <div class="main-card__info">
-                    <h1 th:text="${category.brand}"><span th:text="${category.model}"></span></h1>
+                    <div class="main-card__info-title">
+                        <div><h1 th:text="${category.brand}">Audi</h1></div>
+                        <div><h1 th:text="${category.model}">A6</h1></div>
+                    </div>
                     <h4 th:text="${category.price}">От 2 790 000  ₽</h4>
                     <h4 th:text="${category.bodyType}">Универсал</h4>
                     <h4 th:text="${category.country}">Германия</h4>
