@@ -15,10 +15,13 @@
                     <img  th:src="@{${segment.getLogoImagePath()}}" alt="Car-Image"/>
                 </div>
                 <div class="main-card__info">
-                    <h1 th:text="${segment.brand}"><span th:text="${segment.model}"></span></h1>
-                    <h4 th:text="${segment.price}">От 2 790 000  ₽</h4>
-                    <h4 th:text="${segment.bodyType}">Универсал</h4>
-                    <h4 th:text="${segment.country}">Германия</h4>
+                    <div class="main-card__info-title">
+                        <div><h1 th:text="${segment.brand}"></h1></div>
+                        <div><h1 th:text="${segment.model}"></h1></div>
+                    </div>
+                    <h4 th:text="${segment.price}">₽</h4>
+                    <h4 th:text="${segment.bodyType}"></h4>
+                    <h4 th:text="${segment.country}"></h4>
                 </div>
             </a>
         </div>
