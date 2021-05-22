@@ -10,7 +10,7 @@
 <div class="container">
     <div class="main-card">
         <div class="main-card__item" th:each="segment: ${segment.carList}" enctype="multipart/form-data">
-            <a href="#">
+            <a th:href="@{'/showCar/' + ${segment.id}}">
                 <div class="main-card__img">
                     <img  th:src="@{${segment.getLogoImagePath()}}" alt="Car-Image"/>
                 </div>
