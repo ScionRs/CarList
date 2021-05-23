@@ -13,9 +13,9 @@
 <div th:replace="fragment.html :: header"></div>
 
     <div class="create-new">
-        <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
+        <p  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
         <a  th:href="@{/newCarCategory}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый бренд автомобиля </a>
-        <a  th:href="@{/newCar}"  th:text="#{language.add}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый автомобиль</a>
+        <a  th:href="@{/newCar}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый автомобиль</a>
         <a th:href="@{/showUserList}"  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Показать пользоваталей</a>
     </div>
 
