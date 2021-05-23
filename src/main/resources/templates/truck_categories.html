@@ -9,7 +9,7 @@
 <body>
 <div th:replace="fragment.html :: header"></div>
 <div class="create-new">
-    <p th:text="#{language.admin_rights}" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
+    <p  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Вам доступны права администратора:</p>
     <a  th:href="@{/newTruckCategory}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый бренд грузовика</a>
     <a  th:href="@{/newTruck}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новый грузовик</a>
     <a  th:href="@{/newModifyTruck}"   sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Создать новую комлектацию грузовика</a>
