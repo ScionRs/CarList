@@ -79,7 +79,37 @@
                     </table>
                 </div>
             </div>
+
+       <!-- <div class="product__similar">
+            <h1 class="product__similar-title">
+                Похожие товары:
+            </h1>
+            <div class="product__item-inner">
+                <div class="swiper-container swiper2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"  th:each="acousticL : ${acousticSystemList}">
+                            <div class="product__item">
+                                <ul class="product__similar-list">
+                                    <li>
+                                        <img th:src="@{${acousticL.getLogoImagePath()}}">
+                                        <p th:text="${acousticL.price}">2 679  ₽</p>
+                                        <span th:text="${acousticL.model}"> Sony / Умные часы Sony MN2 SmartWatch</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
         </div>
+    </div>
+</div>-->
+
+        </div>
+
 
     <div th:replace="fragment.html :: footer"></div>
 <script>
