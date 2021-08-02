@@ -1,3 +1,24 @@
+@font-face {
+    font-family: "fontawesome";
+    font-display: swap;
+    src: url("/font/fa-brands-400.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "fontawesome regular";
+    font-display: swap;
+    src: local("MuseoSansCyrl-300"), url("font/fa-regular-400.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "fontawesome solid";
+    font-display: swap;
+    src: local("MuseoSansCyrl-700"), url("font/fa-solid-900.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
 a {
     color: black;
     text-decoration: none;
@@ -32,17 +53,21 @@ body {
     width: 98%;
     box-shadow: 0px 0px 15px 0px black;
 }
+.header__menu {
+    display: flex;
+    list-style-type: none;
+}
 
-.header-nav {
+.header__nav {
     display: flex;
 }
 
-.header-nav__logo {
+.header__nav-logo {
     font-family: "Open Sans Extra Bold";
     font-size: 2rem;
     padding: 1.3rem;
     margin-right: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.7rem;
     line-height: 12px;
 }
 
@@ -56,15 +81,15 @@ body {
     margin-left: 0.2rem;
 }
 
-.header-nav__auth {
+.header__nav-auth {
     margin-left: 1rem;
     padding: 1.7rem;
 }
-.header-nav__auth a {
+.header__nav-auth a {
     display: flex;
 }
 
-.header-nav__auth img {
+.header__nav-auth img {
     float: right;
     margin-left: 0.1rem;
 }
@@ -76,7 +101,7 @@ body {
     text-decoration: none;
 }
 
-.header-nav__link {
+.header__menu-link {
     font-family: "Open Sans";
     color: black;
     list-style: none;
@@ -86,59 +111,92 @@ body {
     display: block;
 }
 
-.header-nav__item {
+.header__menu-item {
     background: #FFFFFF;
-    box-shadow: 0px -5px 5px black;
 }
-.header-nav__item:hover {
+.header__menu-item:hover {
+    transition: 1s all;
     background-color: #66CDAA;
 }
-.header-nav__item:hover .header-nav__link {
+.header__menu-item:hover .header__menu-link {
     color: #FFFFFF;
 }
-.header-nav__item:active {
+.header__menu-item:active {
     background-color: #FFD700;
 }
-.header-nav__item:active .header-nav__link {
+.header__menu-item:active .header__menu-link {
     color: #FFFFFF;
 }
 
 .content {
+    margin-bottom: 30rem;
+}
+.content__items {
+    display: flex;
+    flex-direction: column;
+}
+.content__item {
+    width: 98%;
+    height: 500px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 5rem;
+    box-shadow: 15px 14px 20px -5px rgba(34, 60, 80, 0.6);
+    display: flex;
+    justify-content: center;
+}
+.content__item:hover {
+    transition: 1s all;
+}
+.content__item:hover .content__card-title {
+    display: block;
+    opacity: 1;
+    transition: 1s all;
+}
+.content__item:hover .content__card-icon {
+    display: block;
+    opacity: 1;
+    transition: 1s all;
+}
+.content__item:hover .content__card-img {
+    transform: translate(-10px, 10px);
+    transition: 1s all;
+}
+.content__card {
+    width: 35rem;
     display: flex;
 }
-
-.content-card {
-    width: 25em;
-    height: 35em;
-    box-shadow: 5px 14px 20px -5px rgba(34, 60, 80, 0.6);
-    background-color: #FFFFFF;
-    position: relative;
-    margin: 5rem auto;
+.content__card-title {
+    margin-left: -23rem;
+    margin-top: 12rem;
+    font-size: 3rem;
+    opacity: 0;
 }
-.content-card img {
-    width: 23rem;
-    margin-top: 5rem;
-    padding: 1rem;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
+.content__card-icon {
+    font-size: 10rem;
+    margin-left: 6rem;
+    margin-top: 9rem;
+    opacity: 0;
 }
-.content-card h1 {
-    text-align: center;
-    font-size: "Open Sans";
+.content__card-img {
+    display: block;
+    padding-top: 13rem;
+    width: 600px;
 }
-
-.content-card:hover {
-    box-shadow: 5px 18px 28px 5px rgba(34, 60, 80, 0.6);
+.content__card-link {
+    display: block;
 }
 
-.content-card__item {
-    background-color: #F5F5DC;
-    color: #66CDAA;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    box-shadow: 3px -5px 10px 0px gray;
+#moto {
+    width: auto;
+    height: 400px;
+    padding-top: 11rem;
+}
+
+#truck {
+    width: auto;
+    height: 500px;
+    padding-top: 2rem;
 }
 
 .main-card {
@@ -555,7 +613,7 @@ footer {
     font-size: 2rem;
     padding: 1.3rem;
     margin-right: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.7rem;
     line-height: 12px;
 }
 
@@ -563,36 +621,170 @@ footer {
     background: #FFFFFF;
 }
 
-@media screen and (max-width: 1210px) {
+@media screen and (max-width: 1200px) {
     .container {
         width: auto;
     }
 
-    .header, .header-nav, .main-card, .footer-nav {
-        flex-direction: column;
-    }
-
-    .header {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .header-nav {
-        width: 100%;
-    }
-
-    .header-nav__item {
-        text-align: center;
-        padding: 2rem;
-        box-shadow: none;
+    .header__menu-link {
+        padding: 2rem 1rem 2rem 1rem;
+        font-size: 1rem;
     }
 
     .main-card__item {
         margin: 1rem auto;
     }
 
+    .content__card-title {
+        font-size: 2.5rem;
+        margin-left: -9rem;
+    }
+    .content__card-icon {
+        margin-left: 2rem;
+        margin-top: 10rem;
+        font-size: 7rem;
+    }
+
     footer {
         box-sizing: border-box;
         text-align: center;
+    }
+
+    #moto {
+        height: 350px;
+    }
+
+    #car {
+        width: 550px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .header__menu {
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: -5%;
+        left: -100%;
+        right: 0;
+        width: 50%;
+        height: 100vh;
+        padding: 20px 15px;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: 0.6s all;
+    }
+    .header__menu-active {
+        left: -10%;
+        display: flex;
+    }
+    .header__menu-item {
+        background-color: transparent;
+    }
+    .header__menu-link {
+        background-color: transparent;
+        color: white;
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 5%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 12px;
+    }
+    .hamburger span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: black;
+        margin-bottom: 2px;
+        transition: 0.5s all;
+    }
+    .hamburger-active span {
+        margin-bottom: -2px;
+    }
+    .hamburger-active span:nth-child(1) {
+        transform: translateY(3px) rotate(-45deg);
+    }
+    .hamburger-active span:nth-child(2) {
+        display: none;
+    }
+    .hamburger-active span:nth-child(3) {
+        transform: translateY(3px) rotate(45deg);
+    }
+
+    .content__card-title {
+        display: none;
+    }
+    .content__card-icon {
+        display: none;
+    }
+    .content__item {
+        width: 98%;
+        height: 500px;
+        background-color: white;
+        margin: 0 auto;
+        margin-top: 5rem;
+        box-shadow: 15px 14px 20px -5px rgba(34, 60, 80, 0.6);
+        display: flex;
+        justify-content: center;
+    }
+    .content__item:hover {
+        transition: 1s all;
+    }
+    .content__item:hover .content__card-title {
+        display: none;
+    }
+    .content__item:hover .content__card-icon {
+        display: none;
+    }
+    .content__item:hover .content__card-img {
+        transform: translate(-10px, 10px);
+        transition: 1s all;
+    }
+}
+@media (max-width: 767px) {
+    #moto {
+        height: 300px;
+        padding-top: 15rem;
+    }
+
+    #car {
+        width: 500px;
+        padding-top: 16rem;
+    }
+
+    #truck {
+        height: 400px;
+        padding-top: 8rem;
+    }
+}
+@media (max-width: 576px) {
+    .content__card {
+        width: auto;
+    }
+    .content__item {
+        width: 100%;
+    }
+
+    #moto {
+        height: 250px;
+        padding-top: 11rem;
+    }
+
+    #car {
+        width: 300px;
+        padding-top: 14rem;
+    }
+
+    #truck {
+        height: 300px;
+        padding-top: 7rem;
+    }
+
+    .content__item {
+        height: 400px;
     }
 }

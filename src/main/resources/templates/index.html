@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/fontawesome.min.css">
     <link rel="stylesheet" href="/StyleCustom.css"/>
 </head>
 
@@ -23,34 +24,57 @@
 <a th:href="@{/}" th:text="#{language.main}" id="main">Main Page</a>
 <a th:href="@{/categories}" th:text="#{language.categories}">Categories</a>
 -->
-<div class="content">
-    <div class="content-card">
-        <a href="/motoCategories">
-            <img src="/images/motorcycle2.png" alt="motorcycle">
-            <div class="content-card__item">
-                <h1>Мотоциклы</h1>
+<section class="content">
+    <div class="content__items">
+        <div class="content__item">
+            <div class="content__card">
+                <div class="content__card-item">
+                    <h2 class="content__card-title">Мотоциклы</h2>
+                </div>
+                <div class="content__card-item">
+                    <a href="#" class="content__card-link">
+                        <img src="/images/motorcycle_pr3.png" class="content__card-img" id="moto" alt="bmw">
+                    </a>
+                </div>
+                <div class="content__card-item">
+                    <i class="fas fa-long-arrow-alt-right content__card-icon"></i>
+                </div>
             </div>
-        </a>
-    </div>
-
-    <div class="content-card">
-        <a href="/carCategories">
-        <img src="/images/hyundai.png" alt="">
-        <div class="content-card__item">
-            <h1>Автомобили</h1>
         </div>
-        </a>
-    </div>
 
-    <div class="content-card">
-        <a href="/truckCategories">
-        <img src="/images/truck.png" alt="">
-        <div class="content-card__item">
-            <h1>Грузовики</h1>
+        <div class="content__item">
+            <div class="content__card">
+                <div class="content__card-item">
+                    <h2 class="content__card-title">Автомобили</h2>
+                </div>
+                <div class="content__card-item">
+                    <a href="#" class="content__card-link">
+                        <img src="/images/bmw_present.png" class="content__card-img" id="car" alt="bmw">
+                    </a>
+                </div>
+                <div class="content__card-item">
+                    <i class="fas fa-long-arrow-alt-right content__card-icon"></i>
+                </div>
+            </div>
         </div>
-        </a>
+
+        <div class="content__item">
+            <div class="content__card">
+                <div class="content__card-item">
+                    <h2 class="content__card-title">Грузовики</h2>
+                </div>
+                <div class="content__card-item">
+                    <a href="#" class="content__card-link">
+                        <img src="/images/truck_present.png" class="content__card-img" id="truck" alt="bmw">
+                    </a>
+                </div>
+                <div class="content__card-item">
+                    <i class="fas fa-long-arrow-alt-right content__card-icon"></i>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 <!--
 <div class="cards" th:each="brands: ${brandList}" enctype="multipart/form-data">
@@ -80,6 +104,8 @@
 </div> -->
 
 <div th:replace="fragment.html :: footer"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/all.min.js"></script>
+<script src="/js/script.js"></script>
 </body>
-
 </html>
