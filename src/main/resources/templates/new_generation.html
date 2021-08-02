@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/StyleCustom.css"/>
+</head>
+<body>
+<div th:replace="fragment.html :: header"></div>
+<div class="container">
+    <div class="input__block">
+        <form action="#" th:action="@{/saveGeneration}" th:object="${generation}" enctype="multipart/form-data" method="post">
+            <div class="input__form">
+                <div class="input__form-text"><p>Марка автомобиля:</p>
+                </div>
+                <div class="input__form-select">
+                    <select th:field="*{carList}">
+                        <option selected="0">None</option>
+                        <option th:each="carId : ${carList}" th:value="${carId.id}" th:text="${carId.model}">
+                    </select>
+                </div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Марка Грузовика:</p>
+                </div>
+                <div class="input__form-select">
+                    <select th:field="*{truckList}">
+                        <option selected="0"></option>
+                        <option th:each="truckId : ${truckList}" th:value="${truckId.id}" th:text="${truckId.model}">
+                    </select>
+                </div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Марка:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{brand}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Модель:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{model}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Описание:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{description}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text"><p>Тип кузова:</p></div>
+                <div class="input__form-value"><input type="text" th:field="*{bodyType}" ></div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text label__fix" id="label__fix"><p>Фотография1:</p></div>
+                <div class="input__form-upload">
+                    <label class="input__form-file">
+                        Загрузить фотографию
+                        <input type="file" name="fileImage" accept="image/png,image/jpeg"/>
+                    </label>
+                </div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text label__fix"><p>Фотография2:</p></div>
+                <div class="input__form-upload">
+                    <label class="input__form-file">
+                        Загрузить фотографию
+                        <input type="file" name="fileImage" accept="image/png,image/jpeg"/>
+                    </label>
+                </div>
+            </div>
+            <div class="input__form">
+                <div class="input__form-text label__fix"><p>Фотография3:</p></div>
+                <div class="input__form-upload">
+                    <label class="input__form-file">
+                        Загрузить фотографию
+                        <input type="file" name="fileImage" accept="image/png,image/jpeg"/>
+                    </label>
+                </div>
+            </div>
+            <div class="input__form">
+                <button class="input__form-btn" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragment.html :: footer"></div>
+</body>
+</html>

@@ -32,5 +32,5 @@ public class GenerationService {
     public void delete(Long id){
         generationRepository.deleteById(id);
     }
-    
+
 }

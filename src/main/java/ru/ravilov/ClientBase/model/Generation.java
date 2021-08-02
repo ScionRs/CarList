@@ -40,6 +40,10 @@ public class Generation {
     @JoinColumn(name = "truck_id")
     private Truck truckList;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "moto_id")
+    private Motorcycle motoList;
+
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)

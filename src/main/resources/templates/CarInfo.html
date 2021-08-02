@@ -42,6 +42,7 @@
             <div class="page__tab">
                 <button class="page__tab-tablinks" onclick="selectContent(event,'overview')" id="defaultOpen">Основная информация</button>
                 <button class="page__tab-tablinks" onclick="selectContent(event,'modifications')">Модификации</button>
+                <button class="page__tab-tablinks" onclick="selectContent(event,'generations')">Модификации</button>
             </div>
             <div id="overview" class="tabcontent">
                 <div class="page__description-title">
@@ -79,6 +80,31 @@
                     </table>
                 </div>
             </div>
+
+        <div id="generations" class="tabcontent">
+            <div class="page__modify"  th:each="cars : ${car.generations}">
+                <div class="page__table-title" >
+                    <h2 th:text="${cars.brand}">Audi A6 40 TFSI S tronic</h2>
+                    <hr>
+                </div>
+                <table class="page__table">
+                    <tr>
+                        <th>Цена</th>
+                        <th th:text="${cars.model}"></th>
+                    </tr>
+                    <tr>
+                        <th>Модельный год</th>
+                        <th th:text="${cars.description}">2016</th>
+                    </tr>
+                    <tr>
+                        <th>Тип кузова</th>
+                        <th th:text="${cars.bodyType}">Универсал</th>
+                    </tr>
+                </table>
+            </div>
+            </table>
+        </div>
+    </div>
 
        <!-- <div class="product__similar">
             <h1 class="product__similar-title">
