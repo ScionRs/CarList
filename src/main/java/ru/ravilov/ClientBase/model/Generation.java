@@ -3,6 +3,8 @@ package ru.ravilov.ClientBase.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -32,7 +34,11 @@ public class Generation {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
-    private Car cars;
+    private Car carList;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "truck_id")
+    private Truck truckList;
 
     @Transient
     public String getLogoImagePath(){

@@ -3,6 +3,8 @@ package ru.ravilov.ClientBase.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -49,9 +51,11 @@ public class Car {
     private Segment segment;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<ModificationAuto> modificationAuto;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carList")
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Generation> generations;
 
     @Transient
