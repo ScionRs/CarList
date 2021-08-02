@@ -5,31 +5,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Car {
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Generation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String brand;
+    private String Brand;
 
     private String model;
 
     private String bodyType;
-
-    private int year;
-
-    private String transmission;
-
-    private int price;
-
-    private String country;
 
     private String description;
 
@@ -39,20 +30,9 @@ public class Car {
 
     private String image3;
 
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "car_category_id")
-    private CarCategory carCategory;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "segment_id")
-    private Segment segment;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
-    private List<ModificationAuto> modificationAuto;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
-    private List<Generation> generations;
+    @JoinColumn(name = "car_id")
+    private Car cars;
 
     @Transient
     public String getLogoImagePath(){
@@ -74,5 +54,4 @@ public class Car {
             return  null;
         return  "/brand-logos/" + id + "/" + image3;
     }
-
 }
