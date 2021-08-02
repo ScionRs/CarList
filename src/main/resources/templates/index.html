@@ -80,7 +80,7 @@
     <div class="container">
         <h2 class="main-card__title">Сегменты автомобилей</h2>
         <div class="main-card">
-            <div class="category-card__item" th:each="segment : ${segmentList}" th:unless="${segment.id > 6}" enctype="multipart/form-data">
+            <div class="category-card__item" th:each="segment : ${segmentList}" th:unless="${segment.id > 2006}" enctype="multipart/form-data">
                 <a th:href="@{'/segment/' + ${segment.id}}">
                     <div class="category-card__img">
                         <img th:src="@{${segment.getLogoImagePath()}}">
@@ -91,7 +91,25 @@
                 </a>
             </div>
         </div>
-        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/segments'}">Посмотреть еще >></a></div>
+        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/allSegments'}">Посмотреть еще >></a></div>
+    </div>
+</section>
+
+<section class="car-category">
+    <div class="container">
+        <h2 class="main-card__title">Категории мотоциклов</h2>
+        <div class="category-card__item" th:each="category : ${motorcycleCategoryList}" enctype="multipart/form-data">
+            <a th:href="@{'/motoCategory/' + ${category.id}}">
+                <div class="category-card__img">
+                    <img th:src="@{${category.getLogoImagePath()}}">
+                </div>
+                <div class="main-card__info">
+                    <h1 th:text="${category.name}"></h1>
+                    <h4  th:text="${category.country}"></h4>
+                </div>
+            </a>
+        </div>
+        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/motoCategories'}">Посмотреть еще >></a></div>
     </div>
 </section>
 
@@ -111,9 +129,30 @@
                 </a>
             </div>
         </div>
-        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/carCategory'}">Посмотреть еще >></a></div>
+        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/carCategories'}">Посмотреть еще >></a></div>
     </div>
 </section>
+
+<section class="car-category">
+    <div class="container">
+        <h2 class="main-card__title">Категории грузовиков</h2>
+        <div class="main-card">
+            <div class="category-card__item" th:each="category : ${truckCategoryList}" enctype="multipart/form-data">
+                <a th:href="@{'/truckCategory/' + ${category.id}}">
+                    <div class="category-card__img">
+                        <img th:src="@{${category.getLogoImagePath()}}">
+                    </div>
+                    <div class="main-card__info">
+                        <h1 th:text="${category.name}"></h1>
+                        <h4  th:text="${category.country}"></h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-card__footer"><a class="main-card__link" th:href="@{'/truckCategories'}">Посмотреть еще >></a></div>
+    </div>
+</section>
+
 <!--
 <div class="cards" th:each="brands: ${brandList}" enctype="multipart/form-data">
     <div class="info">
