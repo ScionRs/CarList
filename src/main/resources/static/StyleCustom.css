@@ -1,21 +1,21 @@
 @font-face {
     font-family: "fontawesome";
     font-display: swap;
-    src: url("/fonts/fa-brands-400.woff2") format("woff2");
+    src: url("/font/fa-brands-400.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "fontawesome regular";
     font-display: swap;
-    src: local("MuseoSansCyrl-300"), url("fonts/fa-regular-400.woff2") format("woff2");
+    src: local("MuseoSansCyrl-300"), url("/font/fa-regular-400.woff2") format("woff2");
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: "fontawesome solid";
     font-display: swap;
-    src: local("MuseoSansCyrl-700"), url("fonts/fa-solid-900.woff2") format("woff2");
+    src: local("MuseoSansCyrl-700"), url("/font/fa-solid-900.woff2") format("woff2");
     font-weight: 700;
     font-style: normal;
 }
@@ -26,11 +26,11 @@ a {
 
 @font-face {
     font-family: Open Sans;
-    src: url("../fonts/OpenSans-Regular.ttf");
+    src: url("/font/OpenSans-Regular.ttf");
 }
 @font-face {
     font-family: Open Sans Extra Bold;
-    src: url("../fonts/OpenSans-ExtraBold.ttf");
+    src: url("/font/OpenSans-ExtraBold.ttf");
 }
 body {
     margin: 0;
@@ -208,6 +208,21 @@ body {
 .main-card__title {
     text-align: center;
     font-size: 2rem;
+}
+.main-card__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-card__link {
+    font-family: "Open Sans";
+    padding: 15px;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: #66CDAA;
+    color: white;
+    width: 16rem;
+    margin: 5rem 0;
 }
 
 .main-card__item {
