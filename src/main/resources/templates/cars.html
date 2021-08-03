@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +7,17 @@
 </head>
 <body>
 <div th:replace="fragment.html :: header"></div>
+
+<div class="search__block">
+    <form th:action="@{/cars}">
+        <input class="search__block-input" type="text"  name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+
+        <input class="search__block-search" type="submit" th:value="#{language.search}"  id="btn-search" />
+
+        <input class="search__block-clear"  type="button" th:value="#{language.clear}" id="btnClear" onclick="clearSearch()" />
+    </form>
+</div>
+
 <div class="container">
     <div class="main-card">
         <div class="main-card__item" th:each="car: ${carList}" enctype="multipart/form-data">
@@ -28,5 +39,10 @@
     </div>
 </div>
 <div th:replace="fragment.html :: footer"></div>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/cars}]]";
+    }
+</script>
 </body>
 </html>

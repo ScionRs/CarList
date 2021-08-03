@@ -18,6 +18,12 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    public List<Car> listAll(String keyword){
+        if(keyword != null){
+            return carRepository.search(keyword);
+        }
+        return carRepository.findAll();
+    }
 
     public Car save(Car car) {
         return carRepository.save(car);

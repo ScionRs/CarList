@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ru.ravilov.ClientBase.model.Car;
 import ru.ravilov.ClientBase.model.CarCategory;
 import ru.ravilov.ClientBase.service.CarCategoryService;
+import ru.ravilov.ClientBase.service.CarService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,15 +23,15 @@ import java.util.List;
 public class CarCategoryController {
 
     private CarCategoryService carCategoryService;
-
+    private CarService carService;
     @Autowired
-    public CarCategoryController(CarCategoryService carCategoryService) {
+    public CarCategoryController(CarCategoryService carCategoryService, CarService carService) {
         this.carCategoryService = carCategoryService;
+        this.carService = carService;
     }
 
     @GetMapping("/carCategories")
     public String CategoriesMethod(Model model){
-
         List<CarCategory> carCategoryList = carCategoryService.listAll();
         model.addAttribute("carCategoryList",carCategoryList);
         return "car_categories";
