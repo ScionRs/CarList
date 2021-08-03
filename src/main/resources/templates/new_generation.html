@@ -11,11 +11,21 @@
     <div class="input__block">
         <form action="#" th:action="@{/saveGeneration}" th:object="${generation}" enctype="multipart/form-data" method="post">
             <div class="input__form">
+                <div class="input__form-text"><p>Марка мотоцикла:</p>
+                </div>
+                <div class="input__form-select">
+                    <select th:field="*{motoList}">
+                        <option selected="0" value="0">None</option>
+                        <option th:each="motoId : ${motoList}" th:value="${motoId.id}" th:text="${motoId.model}">
+                    </select>
+                </div>
+            </div>
+            <div class="input__form">
                 <div class="input__form-text"><p>Марка автомобиля:</p>
                 </div>
                 <div class="input__form-select">
                     <select th:field="*{carList}">
-                        <option selected="0">None</option>
+                        <option selected="0" value="0">None</option>
                         <option th:each="carId : ${carList}" th:value="${carId.id}" th:text="${carId.model}">
                     </select>
                 </div>
@@ -25,7 +35,7 @@
                 </div>
                 <div class="input__form-select">
                     <select th:field="*{truckList}">
-                        <option selected="0"></option>
+                        <option selected="0" value="0">None</option>
                         <option th:each="truckId : ${truckList}" th:value="${truckId.id}" th:text="${truckId.model}">
                     </select>
                 </div>

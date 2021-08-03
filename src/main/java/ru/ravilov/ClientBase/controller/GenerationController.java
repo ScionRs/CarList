@@ -12,6 +12,7 @@ import ru.ravilov.ClientBase.model.FileUploadUtil;
 import ru.ravilov.ClientBase.model.Generation;
 import ru.ravilov.ClientBase.service.CarService;
 import ru.ravilov.ClientBase.service.GenerationService;
+import ru.ravilov.ClientBase.service.MotoService;
 import ru.ravilov.ClientBase.service.TruckService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +23,14 @@ import java.util.List;
 public class GenerationController {
 
     private GenerationService generationService;
+    private MotoService motoService;
     private CarService carService;
     private TruckService truckService;
 
     @Autowired
-    public GenerationController(GenerationService generationService, CarService carService, TruckService truckService) {
+    public GenerationController(GenerationService generationService, MotoService motoService, CarService carService, TruckService truckService) {
         this.generationService = generationService;
+        this.motoService = motoService;
         this.carService = carService;
         this.truckService = truckService;
     }
@@ -47,6 +50,7 @@ public class GenerationController {
     public String showNewCarProductForm(Model model){
         Generation generation = new Generation();
         model.addAttribute("generation",generation);
+        model.addAttribute("motoList",motoService.listAll());
         model.addAttribute("carList",carService.listAll());
         model.addAttribute("truckList",truckService.listAll());
 
@@ -91,7 +95,7 @@ public class GenerationController {
 
         Generation generation = generationService.get(id);
 
-        model.addAttribute("generation",generation);
+        model.addAttribute("generationList",generation);
 
         return "GenerationInfo";
     }

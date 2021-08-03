@@ -339,7 +339,7 @@ body {
     font-family: "Open Sans";
     background-color: #66CDAA;
     cursor: pointer;
-    margin-right: 0.5rem;
+    margin: 0 0.5rem 0.5rem 0;
 }
 .page__tab-tablinks:focus {
     background-color: #FFD700;
@@ -426,6 +426,41 @@ body {
     box-shadow: 7px 7px 10px -3px rgba(34, 60, 80, 0.6);
     border: 0;
     cursor: pointer;
+}
+
+.generation__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+.generation__item {
+    width: 40rem;
+    height: 38rem;
+    box-shadow: 15px 18px 24px 5px rgba(34, 60, 80, 0.6);
+    background-color: #FFFFFF;
+    margin-bottom: 3rem;
+}
+.generation__item-img {
+    width: 40rem;
+    height: 30rem;
+    display: block;
+    margin: 0 auto;
+}
+.generation__item-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #66CDAA;
+    margin-top: 1rem;
+    padding-left: 1rem;
+}
+.generation__item-description {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
 }
 
 .login__form {
