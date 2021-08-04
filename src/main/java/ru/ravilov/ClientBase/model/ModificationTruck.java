@@ -38,7 +38,7 @@ public class ModificationTruck {
     private String fullMass;
     private String carryingCapacity;
     private String fuelTankVolume;
-    private String engineType;
+    private int engineType;
     private String numberOfCyclindersAndArrangement;
     private String enginePower;
     private String engineDisplacement;

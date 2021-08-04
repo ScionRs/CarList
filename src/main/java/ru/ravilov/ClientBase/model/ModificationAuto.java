@@ -39,11 +39,11 @@ public class ModificationAuto {
 
     private String maxSpeed;
 
-    private String fuelUrbanCycle;
+    private double fuelUrbanCycle;
 
-    private String fuelHigwayCycle;
+    private double fuelHigwayCycle;
 
-    private String fuelMixedCycle;
+    private double fuelMixedCycle;
 
     private String powerReserve;
 
@@ -67,7 +67,9 @@ public class ModificationAuto {
 
     private String numberOfCyclindersAndArrangement;
 
-    private String enginePower;
+    private int enginePower;
+
+    private int horsePowerPrice;
 
     private String engineDisplacement;
 

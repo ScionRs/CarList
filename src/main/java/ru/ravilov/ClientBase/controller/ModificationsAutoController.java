@@ -24,7 +24,7 @@ public class ModificationsAutoController {
 
     @GetMapping("/allModifyAuto")
     public String viewAllModifyAuto(Model model, HttpServletRequest request){
-
+        ModificationAuto autoCalculation = new ModificationAuto();
         List<ModificationAuto> modificationAutoList = modificationsAutoService.listAll();
         model.addAttribute("modifyList", modificationAutoList);
 
