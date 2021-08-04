@@ -60,7 +60,7 @@ public class Car {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Costs> costs;
+    private List<Cost> costs;
 
     @Transient
     public String getLogoImagePath(){
