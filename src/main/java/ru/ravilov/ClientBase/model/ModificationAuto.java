@@ -36,6 +36,8 @@ public class ModificationAuto {
 
     private int price;
 
+    private int costsPerYear;
+
     private String typeOfFuel;
 
     private String accelerationTime;
@@ -53,6 +55,12 @@ public class ModificationAuto {
     private double fuelMixedCycle;
 
     private double fuelMixedCyclePrice;
+
+    private double fuelMixedCyclePriceMonth;
+
+    private double fuelMixedCyclePriceYear;
+
+    private int totalSumOfYear;
 
     private String powerReserve;
 
