@@ -21,6 +21,7 @@ public class ModificationsAutoService {
 
     public ModificationAuto save(ModificationAuto modificationAuto) {
         horsePowerCalc(modificationAuto);
+        combinedFuelCosts(modificationAuto);
         return modificationsAutoRepository.save(modificationAuto);
     }
 
@@ -63,6 +64,39 @@ public class ModificationsAutoService {
         } else {
             price = 12 * modificationAuto.getEnginePower() ;
             modificationAuto.setHorsePowerPrice(price);
+        }
+    }
+    //цена 100км в различных режимах
+    public void combinedFuelCosts(ModificationAuto modificationAuto){
+        double priceCity = 0,priceHigway = 0,priceCombined = 0;
+        if (modificationAuto.getTypeOfFuel().toLowerCase().equals("аи-95")) {
+            priceCity = (int) (modificationAuto.getFuelUrbanCycle() * 48.25);
+            priceHigway = (int) (modificationAuto.getFuelHigwayCycle() * 48.25);
+            priceCombined = (int) (modificationAuto.getFuelMixedCycle() * 48.25);
+            modificationAuto.setFuelUrbanCyclePrice(priceCity);
+            modificationAuto.setFuelHigwayCyclePrice(priceHigway);
+            modificationAuto.setFuelMixedCyclePrice(priceCombined);
+        } else if(modificationAuto.getTypeOfFuel().toLowerCase().equals("аи-92")){
+            priceCity = (int) (modificationAuto.getFuelUrbanCycle() * 44.70);
+            priceHigway = (int) (modificationAuto.getFuelHigwayCycle() * 44.70);
+            priceCombined = (int) (modificationAuto.getFuelMixedCycle() * 44.70);
+            modificationAuto.setFuelUrbanCyclePrice(priceCity);
+            modificationAuto.setFuelHigwayCyclePrice(priceHigway);
+            modificationAuto.setFuelMixedCyclePrice(priceCombined);
+        } else if (modificationAuto.getTypeOfFuel().toLowerCase().equals("аи-98")){
+            priceCity = (int) (modificationAuto.getFuelUrbanCycle() * 55.99);
+            priceHigway = (int) (modificationAuto.getFuelHigwayCycle() * 55.99);
+            priceCombined = (int) (modificationAuto.getFuelMixedCycle() * 55.99);
+            modificationAuto.setFuelUrbanCyclePrice(priceCity);
+            modificationAuto.setFuelHigwayCyclePrice(priceHigway);
+            modificationAuto.setFuelMixedCyclePrice(priceCombined);
+        } else if (modificationAuto.getTypeOfFuel().toLowerCase().equals("дт")){
+            priceCity = (int) (modificationAuto.getFuelUrbanCycle() * 48.60);
+            priceHigway = (int) (modificationAuto.getFuelHigwayCycle() * 48.60);
+            priceCombined = (int) (modificationAuto.getFuelMixedCycle() * 48.60);
+            modificationAuto.setFuelUrbanCyclePrice(priceCity);
+            modificationAuto.setFuelHigwayCyclePrice(priceHigway);
+            modificationAuto.setFuelMixedCyclePrice(priceCombined);
         }
     }
 

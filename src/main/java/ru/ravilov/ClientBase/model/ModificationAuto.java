@@ -44,9 +44,15 @@ public class ModificationAuto {
 
     private double fuelUrbanCycle;
 
+    private double fuelUrbanCyclePrice;
+
     private double fuelHigwayCycle;
 
+    private double fuelHigwayCyclePrice;
+
     private double fuelMixedCycle;
+
+    private double fuelMixedCyclePrice;
 
     private String powerReserve;
 
