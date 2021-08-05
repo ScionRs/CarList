@@ -58,10 +58,6 @@ public class Car {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Generation> generations;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
-    @Fetch(value = FetchMode.SUBSELECT)
-    private List<Cost> costs;
-
     @Transient
     public String getLogoImagePath(){
         if(image == null || id == null)
