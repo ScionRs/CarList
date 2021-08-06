@@ -36,113 +36,112 @@ function selectContent(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
-    let fuelUrbanCycle = document.getElementById('fuelUrbanCycle').innerHTML;
-    let fuelHigwayCycle = document.getElementById('fuelHigwayCycle').innerHTML;
-    let fuelMixedCycle = document.getElementById('fuelMixedCycle').innerHTML;
-    let fuelUrbanCyclePrice = document.getElementById('fuelUrbanCyclePrice').innerHTML;
-    let fuelHigwayCyclePrice = document.getElementById('fuelHigwayCyclePrice').innerHTML;
-    let fuelMixedCyclePrice = document.getElementById('fuelMixedCyclePrice').innerHTML;
-    let horsePowerPrice = document.getElementById('horsePowerPrice').innerHTML;
-    let fuelMixedCyclePriceYear = document.getElementById('fuelMixedCyclePriceYear').innerHTML;
-    let costsPerYear = document.getElementById('costsPerYear').innerHTML;
-
-    let myChart = document.getElementById('myChart').getContext('2d');
-    let myChart2 = document.getElementById('myChart2').getContext('2d');
-    let myChart3 = document.getElementById('myChart3').getContext('2d');
-    let massPopChart = new Chart(myChart,{
-        type: 'bar',
-        data:{
-            labels:['Расходы в городском режиме','Расход на трассе','Расход в смешанном режиме'],
-            datasets:[{
-                label: 'Расходы',
-                data:[
-                    fuelUrbanCycle,
-                    fuelHigwayCycle,
-                    fuelMixedCycle,
-                ],
-                backgroundColor: [
-                    'rgba(54,162,235,0.6)',
-                    'rgba(255,206,86,0.6)',
-                    'rgba(255,99,132,0.6)',
-                ],
-                borderWith: 3,
-                borderColor: '#777',
-                hoverBorderWidth:3,
-                hoverBorderColor:'#000'
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Круг расходов за год',
-                fontSize: 25,
-                color: '#777'
-            }
-        }
-    });
-    let massPopChart2 = new Chart(myChart2,{
-        type: 'bar',
-        data:{
-            labels:['Расходы в городском режиме','Расход на трассе','Расход в смешанном режиме'],
-            datasets:[{
-                label: 'Расходы',
-                data:[
-                    fuelUrbanCycle,
-                    fuelHigwayCycle,
-                    fuelMixedCycle,
-                ],
-                backgroundColor: [
-                    'rgba(54,162,235,0.6)',
-                    'rgba(255,206,86,0.6)',
-                    'rgba(255,99,132,0.6)',
-                ],
-                borderWith: 3,
-                borderColor: '#777',
-                hoverBorderWidth:3,
-                hoverBorderColor:'#000'
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Круг расходов за год',
-                fontSize: 25,
-                color: '#777'
-            }
-        }
-    });
-    let massPopChart3 = new Chart(myChart3,{
-        type: 'pie',
-        data:{
-            labels:['Бензин','Налог','Обслуживание'],
-            datasets:[{
-                label: 'Population',
-                data:[
-                    fuelMixedCyclePriceYear,
-                    horsePowerPrice,
-                    costsPerYear,
-                ],
-                backgroundColor: [
-                    'rgba(54,162,235,0.6)',
-                    'rgba(255,206,86,0.6)',
-                    'rgba(255,99,132,0.6)',
-                ],
-                borderWith: 3,
-                borderColor: '#777',
-                hoverBorderWidth:3,
-                hoverBorderColor:'#000'
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Круг расходов за год',
-                fontSize: 25,
-                color: '#777'
-            }
-        }
-    });
-
-
 })
+
+let fuelUrbanCycle = document.getElementById('fuelUrbanCycle').innerHTML;
+let fuelHigwayCycle = document.getElementById('fuelHigwayCycle').innerHTML;
+let fuelMixedCycle = document.getElementById('fuelMixedCycle').innerHTML;
+let fuelUrbanCyclePrice = document.getElementById('fuelUrbanCyclePrice').innerHTML;
+let fuelHigwayCyclePrice = document.getElementById('fuelHigwayCyclePrice').innerHTML;
+let fuelMixedCyclePrice = document.getElementById('fuelMixedCyclePrice').innerHTML;
+let horsePowerPrice = document.getElementById('horsePowerPrice').innerHTML;
+let fuelMixedCyclePriceYear = document.getElementById('fuelMixedCyclePriceYear').innerHTML;
+let costsPerYear = document.getElementById('costsPerYear').innerHTML;
+
+let myChart = document.getElementById('myChart').getContext('2d');
+let myChart2 = document.getElementById('myChart2').getContext('2d');
+let myChart3 = document.getElementById('myChart3').getContext('2d');
+let massPopChart = new Chart(myChart,{
+    type: 'bar',
+    data:{
+        labels:['Расходы в городском режиме','Расход на трассе','Расход в смешанном режиме'],
+        datasets:[{
+            label: 'Расходы',
+            data:[
+                fuelUrbanCycle,
+                fuelHigwayCycle,
+                fuelMixedCycle,
+            ],
+            backgroundColor: [
+                'rgba(54,162,235,0.6)',
+                'rgba(255,206,86,0.6)',
+                'rgba(255,99,132,0.6)',
+            ],
+            borderWith: 3,
+            borderColor: '#777',
+            hoverBorderWidth:3,
+            hoverBorderColor:'#000'
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Расходы за год',
+            fontSize: 25,
+            color: '#777'
+        }
+    }
+});
+let massPopChart2 = new Chart(myChart2,{
+    type: 'bar',
+    data:{
+        labels:['Расходы в городском режиме','Расход на трассе','Расход в смешанном режиме'],
+        datasets:[{
+            label: 'Расходы',
+            data:[
+                fuelUrbanCyclePrice,
+                fuelHigwayCyclePrice,
+                fuelMixedCyclePrice,
+            ],
+            backgroundColor: [
+                'rgba(54,162,235,0.6)',
+                'rgba(255,206,86,0.6)',
+                'rgba(255,99,132,0.6)',
+            ],
+            borderWith: 3,
+            borderColor: '#777',
+            hoverBorderWidth:3,
+            hoverBorderColor:'#000'
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Расходы за год',
+            fontSize: 25,
+            color: '#777'
+        }
+    }
+});
+let massPopChart3 = new Chart(myChart3,{
+    type: 'pie',
+    data:{
+        labels:['Бензин','Налог','Обслуживание'],
+        datasets:[{
+            label: 'Population',
+            data:[
+                fuelMixedCyclePriceYear,
+                horsePowerPrice,
+                costsPerYear,
+            ],
+            backgroundColor: [
+                'rgba(54,162,235,0.6)',
+                'rgba(255,206,86,0.6)',
+                'rgba(255,99,132,0.6)',
+            ],
+            borderWith: 3,
+            borderColor: '#777',
+            hoverBorderWidth:3,
+            hoverBorderColor:'#000'
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Круг расходов за год',
+            fontSize: 25,
+            color: '#777'
+        }
+    }
+});
+
