@@ -29,6 +29,36 @@ a {
     src: url("/font/OpenSans-Regular.ttf");
 }
 @font-face {
+    font-family: "fontawesome";
+    font-display: swap;
+    src: url("/font/fa-brands-400.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "fontawesome regular";
+    font-display: swap;
+    src: local("MuseoSansCyrl-300"), url("/font/fa-regular-400.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "fontawesome solid";
+    font-display: swap;
+    src: local("MuseoSansCyrl-700"), url("/font/fa-solid-900.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: Open Sans;
+    src: url("/font/OpenSans-Regular.ttf");
+}
+@font-face {
     font-family: Open Sans Extra Bold;
     src: url("/font/OpenSans-ExtraBold.ttf");
 }
@@ -698,6 +728,46 @@ input[type=file] {
     font-family: "Open Sans";
     text-align: center;
     font-size: 1.5rem;
+}
+
+.costs__title {
+    text-align: center;
+}
+.costs__wrapper {
+    margin-top: 5rem;
+}
+.costs__items {
+    background-color: white;
+    padding: 1rem;
+}
+.costs__item {
+    margin-top: 1rem;
+    width: 96%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    background-color: white;
+    box-shadow: 13px 12px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.costs__description {
+    display: flex;
+    font-size: 1.5rem;
+}
+.costs__description-icon {
+    margin-right: 0.5rem;
+}
+.costs__score {
+    font-size: 1.5rem;
+    display: flex;
+}
+.costs__score-text {
+    margin-left: 0.5rem;
+}
+.costs__graph {
+    margin-top: 3rem;
+    width: 50%;
 }
 
 footer {

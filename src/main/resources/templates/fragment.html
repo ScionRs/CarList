@@ -56,13 +56,28 @@
 
 <footer th:fragment="footer">
     <div class="container">
-        <nav class="footer-nav">
-            <div class="footer-nav__logo"><a href="" class="logo">CarWiki <br><span>все об автомобилях</span></a></div>
-            <div class="footer-nav__item"><a class="header-nav__link" href="">Главная</a></div>
-            <div class="footer-nav__item"><a class="header-nav__link" href="">Мотоциклы</a></div>
-            <div class="footer-nav__item"><a class="header-nav__link" href="">Легковые</a></div>
-            <div class="footer-nav__item"><a class="header-nav__link" href="">Грузовики</a></div>
-            <div class="footer-nav__item"><a class="header-nav__link" href="">Сегменты</a></div>
+        <nav class="header__nav">
+            <div class="header__nav-logo"><a class="logo" href="">CarWiki <br><span>все об автомобилях</span></a></div>
+            <ul class="header__menu">
+                <li class="header__menu-item"><a class="header__menu-link" th:href="@{/}">Главная</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" th:href="@{/motoCategories}">Мотоциклы</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" th:href="@{/carCategories}">Легковые</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" th:href="@{/truckCategories}">Грузовики</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" th:href="@{/allSegments}">Сегменты</a></li>
+                <li class="header__nav-auth">
+                    <a  href="#" th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" id="auth">Войти
+                        <div><img src="/images/login.png" alt=""></div></a>
+                </li>
+                <li><div сlass="header-nav__auth" sec:authorize="isAuthenticated()" style="font-size: 1.5rem; margin-top: 10px"><a th:href="@{/logout}" style = "color: #66CDAA; display: block;
+    margin-top: 1.1rem; font-family: 'Open Sans';">Выйти</a></div></li>
+                <li><div сlass="header-nav__auth" sec:authorize="isAuthenticated()" style="font-size: 1.5rem; margin-top: 10px"><a th:href="@{/logout}" style = "color: #66CDAA; display: block;
+    margin-top: 1.1rem; font-family: 'Open Sans';">Выйти</a></div></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </div>
 </footer>
