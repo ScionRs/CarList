@@ -3,6 +3,8 @@ package ru.ravilov.ClientBase.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -43,6 +45,10 @@ public class Motorcycle {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "moto")
     private List<ModificationMoto> modificationMotos;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "motoList")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Generation> generations;
 
     @Transient
     public String getLogoImagePath(){

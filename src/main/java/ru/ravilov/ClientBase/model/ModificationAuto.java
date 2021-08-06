@@ -3,8 +3,11 @@ package ru.ravilov.ClientBase.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,17 +36,31 @@ public class ModificationAuto {
 
     private int price;
 
+    private int costsPerYear;
+
     private String typeOfFuel;
 
     private String accelerationTime;
 
     private String maxSpeed;
 
-    private String fuelUrbanCycle;
+    private double fuelUrbanCycle;
 
-    private String fuelHigwayCycle;
+    private double fuelUrbanCyclePrice;
 
-    private String fuelMixedCycle;
+    private double fuelHigwayCycle;
+
+    private double fuelHigwayCyclePrice;
+
+    private double fuelMixedCycle;
+
+    private double fuelMixedCyclePrice;
+
+    private double fuelMixedCyclePriceMonth;
+
+    private double fuelMixedCyclePriceYear;
+
+    private int totalSumOfYear;
 
     private String powerReserve;
 
@@ -67,7 +84,9 @@ public class ModificationAuto {
 
     private String numberOfCyclindersAndArrangement;
 
-    private String enginePower;
+    private int enginePower;
+
+    private int horsePowerPrice;
 
     private String engineDisplacement;
 

@@ -36,7 +36,7 @@ public class ModificationMoto {
     private int numberOfValvesCyclinder;
     private String coolingSystem;
     private String launchSystem;
-    private String enginePower;
+    private int enginePower;
     private String engineDisplacement;
     private String torque;
     private String transmissionType;

@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/fontawesome/fontawesome.min.css">
     <link rel="stylesheet" href="/StyleCustom.css/">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -42,6 +43,8 @@
             <div class="page__tab">
                 <button class="page__tab-tablinks" onclick="selectContent(event,'overview')" id="defaultOpen">Основная информация</button>
                 <button class="page__tab-tablinks" onclick="selectContent(event,'modifications')">Модификации</button>
+                <button class="page__tab-tablinks" onclick="selectContent(event,'generations')">Предыдущие поколения</button>
+                <button class="page__tab-tablinks" onclick="selectContent(event,'costs')">Расходы на содержание</button>
             </div>
             <div id="overview" class="tabcontent">
                 <div class="page__description-title">
@@ -80,6 +83,136 @@
                 </div>
             </div>
 
+        <section class="generation tabcontent" id="generations">
+            <div class="container">
+                <div class="generation__items">
+                    <div class="generation__item" th:each="cars : ${car.generations}">
+                        <a th:href="@{'/generation/' + ${cars.id}}">
+                            <img th:src="@{${cars.getLogoImagePath()}}" alt="auto" class="generation__item-img">
+                            <div class="generation__item-title" th:text="${cars.brand}">Audi a6</div>
+                            <div class="generation__item-description">1997-2000</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="costs" class="costs tabcontent">
+            <div class="costs__items" th:each="cars : ${car.modificationAuto}">
+                <h1 class="costs__title" th:text="${cars.modification}">Комплектация name</h1>
+                    <div class="costs__item">
+                        <div class="costs__description">
+                            <i class="fas fa-gas-pump costs__description-icon"></i>
+                            <div class="costs__description-text">Расход бензина в городском цикле</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" id="fuelUrbanCycle" th:text="${cars.fuelUrbanCycle}">12.4</div>
+                            <div class="costs__score-text">литра</div>
+                        </div>
+                    </div>
+                    <div class="costs__item">
+                        <div class="costs__description">
+                            <i class="fas fa-gas-pump costs__description-icon"></i>
+                            <div class="costs__description-text">Расход бензина бензина на трассе</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" th:text="${cars.fuelHigwayCycle}" id="fuelHigwayCycle">12.4</div>
+                            <div class="costs__score-text">литра</div>
+                        </div>
+                    </div>
+                    <div class="costs__item">
+                        <div class="costs__description">
+                            <i class="fas fa-gas-pump costs__description-icon"></i>
+                            <div class="costs__description-text">Расход бензина в смешанном цикле</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" th:text="${cars.fuelMixedCycle}" id="fuelMixedCycle">12.4</div>
+                            <div class="costs__score-text">литра</div>
+                        </div>
+                    </div>
+                <div>
+                    <canvas class="costs__graph" id="myChart"></canvas>
+                </div>
+                <div class="costs__item">
+                    <div class="costs__description">
+                        <i class="fas fa-gas-pump costs__description-icon"></i>
+                        <div class="costs__description-text">Расход бензина на 100км в городском цикле</div>
+                    </div>
+                    <div class="costs__score">
+                        <div class="costs__score-title" id="fuelUrbanCyclePrice" th:text="${cars.fuelUrbanCyclePrice}">12.4</div>
+                        <div class="costs__score-text">рублей</div>
+                    </div>
+                </div>
+                <div class="costs__item">
+                    <div class="costs__description">
+                        <i class="fas fa-gas-pump costs__description-icon"></i>
+                        <div class="costs__description-text">Расход на 100км бензина бензина на трассе</div>
+                    </div>
+                    <div class="costs__score">
+                        <div class="costs__score-title" th:text="${cars.fuelHigwayCyclePrice}" id="fuelHigwayCyclePrice">12.4</div>
+                        <div class="costs__score-text">рублей</div>
+                    </div>
+                </div>
+                <div class="costs__item">
+                    <div class="costs__description">
+                        <i class="fas fa-gas-pump costs__description-icon"></i>
+                        <div class="costs__description-text">Расход на 100км бензина в смешанном цикле</div>
+                    </div>
+                    <div class="costs__score">
+                        <div class="costs__score-title" th:text="${cars.fuelMixedCyclePrice}" id="fuelMixedCyclePrice">12.4</div>
+                        <div class="costs__score-text">рублей</div>
+                    </div>
+                </div>
+                <div>
+                    <canvas class="costs__graph" id="myChart2"></canvas>
+                </div>
+                <div class="costs__item">
+                    <div class="costs__description">
+                            <i class="fas fa-money-check-alt costs__description-icon"></i>
+                            <div class="costs__description-text">Налог на лошадинную силу</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" th:text="${cars.horsePowerPrice}" id="horsePowerPrice">12.4</div>
+                            <div class="costs__score-text">рублей</div>
+                        </div>
+                    </div>
+                    <div class="costs__item">
+                        <div class="costs__description">
+                            <i class="fas fa-gas-pump costs__description-icon"></i>
+                            <div class="costs__description-text">Расход бензина на год</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" th:text="${cars.fuelMixedCyclePriceYear}" id="fuelMixedCyclePriceYear">12.4</div>
+                            <div class="costs__score-text">рублей</div>
+                        </div>
+                    </div>
+                    <div class="costs__item">
+                        <div class="costs__description">
+                            <i class="fas fa-tools costs__description-icon"></i>
+                            <div class="costs__description-text">Расход на обслуживание автомобиля в год</div>
+                        </div>
+                        <div class="costs__score">
+                            <div class="costs__score-title" th:text="${cars.costsPerYear}" id="costsPerYear">12.4</div>
+                            <div class="costs__score-text">рублей</div>
+                        </div>
+                    </div>
+                <div class="costs__item">
+                    <div class="costs__description">
+                        <i class="fas fa-money-check-alt costs__description-icon"></i>
+                        <div class="costs__description-text">Общие сумма расходов за год</div>
+                    </div>
+                    <div class="costs__score">
+                        <div class="costs__score-title" th:text="${cars.totalSumOfYear}">12.4</div>
+                        <div class="costs__score-text">рублей</div>
+                    </div>
+                </div>
+                <div>
+                    <canvas class="costs__graph" id="myChart3"></canvas>
+                </div>
+                </div>
+        </section>
+    </div>
+
        <!-- <div class="product__similar">
             <h1 class="product__similar-title">
                 Похожие товары:
@@ -112,6 +245,10 @@
 
 
     <div th:replace="fragment.html :: footer"></div>
+<script src="/js/all.min.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/chart.min.js"></script>
+<script src="/js/script.js"></script>
 <script>
     var mySwiper = new Swiper('.swiper-container', {
         // Optional parameters

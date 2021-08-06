@@ -9,4 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car,Long> {
+    @Query("SELECT p FROM Car p WHERE CONCAT(p.brand, ' ', p.model, ' ', p.bodyType, ' ', p.year, ' ',p.transmission, ' ',p.price,' ',p.country) LIKE %?1%")
+    public List<Car> search(String keyword);
 }

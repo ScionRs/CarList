@@ -1,36 +1,28 @@
 package ru.ravilov.ClientBase.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Car {
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Generation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String brand;
+    private String Brand;
 
     private String model;
 
     private String bodyType;
-
-    private int year;
-
-    private String transmission;
-
-    private int price;
-
-    private String country;
 
     private String description;
 
@@ -40,22 +32,17 @@ public class Car {
 
     private String image3;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "car_id")
+    private Car carList;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "car_category_id")
-    private CarCategory carCategory;
+    @JoinColumn(name = "truck_id")
+    private Truck truckList;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "segment_id")
-    private Segment segment;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "cars")
-    @Fetch(value = FetchMode.SUBSELECT)
-    private List<ModificationAuto> modificationAuto;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carList")
-    @Fetch(value = FetchMode.SUBSELECT)
-    private List<Generation> generations;
+    @JoinColumn(name = "moto_id")
+    private Motorcycle motoList;
 
     @Transient
     public String getLogoImagePath(){
@@ -77,5 +64,4 @@ public class Car {
             return  null;
         return  "/brand-logos/" + id + "/" + image3;
     }
-
 }

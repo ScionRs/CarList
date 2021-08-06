@@ -38,13 +38,13 @@ public class CarController {
 
 
     @GetMapping("/cars")
-    public String viewHomePage(Model model, HttpServletRequest request){
+    public String viewHomePage(Model model, HttpServletRequest request,String keyword){
 
 
-        List<Car> carList = carService.listAll();
+        List<Car> carList = carService.listAll(keyword);
         model.addAttribute("carList",carList);
+        model.addAttribute("keyword",keyword);
         model.addAttribute("carModifications",modificationsAutoService);
-
 
         return "cars";
     }

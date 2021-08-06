@@ -22,8 +22,12 @@ import java.util.List;
 @Controller
 public class SegmentController {
 
+
+    private SegmentService segmentService;
     @Autowired
-    SegmentService segmentService;
+    public SegmentController(SegmentService segmentService) {
+        this.segmentService = segmentService;
+    }
 
     @GetMapping("/allSegments")
     public String AllSegment(Model model){
