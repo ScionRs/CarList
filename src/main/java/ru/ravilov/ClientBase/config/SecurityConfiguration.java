@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/newTruckCategory").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/newTruck").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/newSegment").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/newGeneration").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/**").permitAll()
                 .antMatchers(
                 "/registration**",
